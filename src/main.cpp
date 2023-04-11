@@ -31,4 +31,6 @@ int main()
 		game.printBoard();
 		game.step();
 	}
+	delete player1;
+	delete player2;
 }
