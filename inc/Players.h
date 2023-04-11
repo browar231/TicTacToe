@@ -14,7 +14,7 @@ private:
 class PlayerHuman : public Player {
 public:
 	PlayerHuman()
-		: Player("Human #" + std::to_string(s_id++)) {};
+		: Player("Player #" + std::to_string(s_id++)) {};
 	int move(bool allowed[9]) override;
 
 private:
