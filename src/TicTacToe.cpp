@@ -37,6 +37,7 @@ void TicTacToe::initGame()
 }
 void TicTacToe::step()
 {
+	std::cout << "Player: " << m_players[m_currentPlayer]->getName() << std::endl;
 	if (isGameWon()) {
 		m_currentPlayer += 1;
 		m_currentPlayer %= 2;

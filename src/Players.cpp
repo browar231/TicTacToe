@@ -18,7 +18,6 @@ int PlayerHuman::move(const bool allowed[9])
 int PlayerHuman::askForInput()
 {
 	int field;
-	std::cout << "Player: " << getName() << std::endl;
 	std::cout << "Field #";
 	std::cin >> field;
 	return field;
