@@ -8,12 +8,19 @@ int main()
 			  << "1 - two players" << std::endl
 			  << "2 - play with CPU" << std::endl;
 	std::cin >> players;
-
-	TicTacToe game(players);
-	game.intro();
-	while (game.isRunning()) {
-		system("clear");
-		game.printBoard();
-		game.step();
-	}
+	do {
+		TicTacToe game(players);
+		game.intro();
+		while (game.isRunning()) {
+			system("clear");
+			game.printBoard();
+			game.step();
+		};
+		char input;
+		std::cout << "Play again?(y/n)";
+		std::cin >> input;
+		if (input != 'y') {
+			break;
+		}
+	} while (true);
 }
