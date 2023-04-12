@@ -6,7 +6,7 @@ std::string Player::getName()
 {
 	return m_name;
 }
-int PlayerHuman::move(bool allowed[9])
+int PlayerHuman::move(const bool allowed[9])
 {
 	while (true) {
 		int field = askForInput();
@@ -23,7 +23,7 @@ int PlayerHuman::askForInput()
 	std::cin >> field;
 	return field;
 }
-int PlayerCPU::move(bool allowed[9])
+int PlayerCPU::move(const bool allowed[9])
 {
 	using namespace std::chrono_literals;
 	std::this_thread::sleep_for(1000ms);
