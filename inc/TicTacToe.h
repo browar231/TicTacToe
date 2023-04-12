@@ -5,7 +5,6 @@ class TicTacToe {
 public:
 	typedef int PlayerID;
 	TicTacToe();
-	TicTacToe(Player*, Player*);
 	TicTacToe(const int numberOfHumanPlayers);
 	~TicTacToe();
 	bool isRunning();

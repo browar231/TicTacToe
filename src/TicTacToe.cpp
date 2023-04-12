@@ -7,12 +7,6 @@ TicTacToe::TicTacToe()
 	m_players[1] = new PlayerCPU;
 	initGame();
 }
-TicTacToe::TicTacToe(Player* player1, Player* player2)
-{
-	m_players[0] = player1;
-	m_players[1] = player2;
-	initGame();
-}
 TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 {
 	switch (numberOfHumanPlayers) {
