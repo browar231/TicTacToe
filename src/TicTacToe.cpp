@@ -48,6 +48,8 @@ void TicTacToe::step()
 	}
 	m_allowed[selectedField] = false;
 	m_board[selectedField] = (m_currentPlayer % 2) ? 'x' : 'o';
+	clearConsole();
+	printBoard();
 	if (isGameWon()) {
 		std::cout << m_players[m_currentPlayer]->getName() << " won!" << std::endl;
 		terminate();
