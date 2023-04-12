@@ -5,8 +5,8 @@ int main()
 {
 	int players;
 	std::cout << "0 - two CPU players" << std::endl
-			  << "1 - two players" << std::endl
-			  << "2 - play with CPU" << std::endl;
+			  << "1 - play with CPU" << std::endl
+			  << "2 - two players" << std::endl;
 	std::cin >> players;
 	do {
 		TicTacToe game(players);
