@@ -31,6 +31,11 @@ TicTacToe::TicTacToe(int numberOfHumanPlayers)
 	}
 	initGame();
 }
+TicTacToe::~TicTacToe()
+{
+	delete m_players[0];
+	delete m_players[1];
+}
 void TicTacToe::initGame()
 {
 	initializeAllowed();

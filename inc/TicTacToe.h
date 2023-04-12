@@ -7,6 +7,7 @@ public:
 	TicTacToe();
 	TicTacToe(Player*, Player*);
 	TicTacToe(int numberOfHumanPlayers);
+	~TicTacToe();
 	bool isRunning();
 	static void intro();
 	static std::string getInputFromConsole();
