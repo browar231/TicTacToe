@@ -22,12 +22,12 @@ TicTacToe::TicTacToe(int numberOfHumanPlayers)
 		break;
 	case 1:
 		m_players[0] = new PlayerHuman;
-		m_players[1] = new PlayerHuman;
+		m_players[1] = new PlayerCPU;
 		break;
 	case 2:
 	default:
 		m_players[0] = new PlayerHuman;
-		m_players[1] = new PlayerCPU;
+		m_players[1] = new PlayerHuman;
 	}
 	initGame();
 }
