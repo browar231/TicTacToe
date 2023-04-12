@@ -32,6 +32,7 @@ public:
 		: Player(name) {};
 	int move(const bool allowed[9]) override;
 	int moveFirstAllowed(const bool allowed[9]);
+	int moveRandom(const bool allowed[9]);
 
 private:
 	static int s_id;
