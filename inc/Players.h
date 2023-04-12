@@ -15,6 +15,8 @@ class PlayerHuman : public Player {
 public:
 	PlayerHuman()
 		: Player("Player #" + std::to_string(s_id++)) {};
+	PlayerHuman(std::string name)
+		: Player(name) {};
 	int move(const bool allowed[9]) override;
 
 private:
@@ -26,6 +28,8 @@ class PlayerCPU : public Player {
 public:
 	PlayerCPU()
 		: Player("CPU #" + std::to_string(s_id++)) {};
+	PlayerCPU(std::string name)
+		: Player(name) {};
 	int move(const bool allowed[9]) override;
 
 private:
