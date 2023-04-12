@@ -8,7 +8,7 @@ public:
 	std::string getName();
 
 private:
-	std::string m_name;
+	const std::string m_name;
 };
 // Human player
 class PlayerHuman : public Player {
