@@ -5,13 +5,34 @@ TicTacToe::TicTacToe()
 {
 	m_players[0] = new PlayerHuman;
 	m_players[1] = new PlayerCPU;
-	initializeAllowed();
-	initializeBoard();
+	initGame();
 }
 TicTacToe::TicTacToe(Player* player1, Player* player2)
 {
 	m_players[0] = player1;
 	m_players[1] = player2;
+	initGame();
+}
+TicTacToe::TicTacToe(int numberOfHumanPlayers)
+{
+	switch (numberOfHumanPlayers) {
+	case 0:
+		m_players[0] = new PlayerCPU;
+		m_players[1] = new PlayerCPU;
+		break;
+	case 1:
+		m_players[0] = new PlayerHuman;
+		m_players[1] = new PlayerHuman;
+		break;
+	case 2:
+	default:
+		m_players[0] = new PlayerHuman;
+		m_players[1] = new PlayerCPU;
+	}
+	initGame();
+}
+void TicTacToe::initGame()
+{
 	initializeAllowed();
 	initializeBoard();
 }

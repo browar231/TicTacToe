@@ -6,6 +6,7 @@ public:
 	typedef int PlayerID;
 	TicTacToe();
 	TicTacToe(Player*, Player*);
+	TicTacToe(int numberOfHumanPlayers);
 	bool isRunning();
 	static void intro();
 	static std::string getInputFromConsole();
@@ -25,6 +26,7 @@ private:
 	bool checkAllCols();
 	bool checkAllRows();
 	bool checkDiagonals();
+	void initGame();
 	void initializeAllowed();
 	void initializeBoard();
 	bool areThereFreeFields();
