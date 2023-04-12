@@ -24,6 +24,7 @@ private:
 	bool isGameWon();
 	bool isMoveAllowed(const int field);
 	void nextPlayer();
+	char returnPlayerSign(const PlayerID player);
 	bool checkCol(const int);
 	bool checkRow(const int);
 	bool checkAllCols();

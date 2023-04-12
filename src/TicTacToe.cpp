@@ -47,7 +47,7 @@ void TicTacToe::step()
 		}
 	}
 	m_allowed[selectedField] = false;
-	m_board[selectedField] = (m_currentPlayer % 2) ? 'x' : 'o';
+	m_board[selectedField] = returnPlayerSign(m_currentPlayer);
 	clearConsole();
 	printBoard();
 	if (isGameWon()) {
@@ -61,6 +61,13 @@ void TicTacToe::step()
 		return;
 	}
 	nextPlayer();
+}
+char TicTacToe::returnPlayerSign(const PlayerID player)
+{
+	if (player == 0) {
+		return 'x';
+	}
+	return 'o';
 }
 void TicTacToe::nextPlayer()
 {
