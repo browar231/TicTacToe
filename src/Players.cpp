@@ -24,6 +24,14 @@ int PlayerCPU::move(const bool allowed[9])
 	return moveFirstAllowed(allowed);
 	return 0;
 }
-
+int PlayerCPU::moveFirstAllowed(const bool allowed[9])
+{
+	for (int i = 0; i < 9; i++) {
+		if (allowed[i]) {
+			return i;
+		}
+	};
+	return 0;
+}
 int PlayerHuman::s_id = 1;
 int PlayerCPU::s_id = 1;
