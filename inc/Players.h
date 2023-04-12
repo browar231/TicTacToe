@@ -31,6 +31,7 @@ public:
 	PlayerCPU(std::string name)
 		: Player(name) {};
 	int move(const bool allowed[9]) override;
+	int moveFirstAllowed(const bool allowed[9]);
 
 private:
 	static int s_id;

@@ -21,12 +21,9 @@ int PlayerCPU::move(const bool allowed[9])
 {
 	using namespace std::chrono_literals;
 	std::this_thread::sleep_for(1000ms);
-	for (int i = 0; i < 9; i++) {
-		if (allowed[i]) {
-			return i;
-		}
-	};
+	return moveFirstAllowed(allowed);
 	return 0;
 }
+
 int PlayerHuman::s_id = 1;
 int PlayerCPU::s_id = 1;
