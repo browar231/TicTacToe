@@ -38,7 +38,13 @@ void TicTacToe::initGame()
 void TicTacToe::step()
 {
 	std::cout << "Player: " << m_players[m_currentPlayer]->getName() << std::endl;
-	int selectedField = m_players[m_currentPlayer]->move(m_allowed);
+	int selectedField;
+	while (true) {
+		selectedField = m_players[m_currentPlayer]->move(m_allowed);
+		if (isMoveAllowed(selectedField)) {
+			break;
+		}
+	}
 	m_allowed[selectedField] = false;
 	m_board[selectedField] = (m_currentPlayer % 2) ? 'x' : 'o';
 	if (isGameWon()) {
@@ -97,6 +103,13 @@ void TicTacToe::initializeBoard()
 	for (int i = 0; i < 9; i++) {
 		m_board[i] = i + '0';
 	};
+}
+bool TicTacToe::isMoveAllowed(const int field)
+{
+	if (field >= 0 && field < 9) {
+		return m_allowed[field];
+	}
+	return false;
 }
 bool TicTacToe::isGameWon()
 {

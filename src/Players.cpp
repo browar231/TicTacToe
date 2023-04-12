@@ -8,12 +8,7 @@ std::string Player::getName()
 }
 int PlayerHuman::move(const bool allowed[9])
 {
-	while (true) {
-		int field = askForInput();
-		if (field >= 0 && field <= 8 && allowed[field]) {
-			return field;
-		}
-	}
+	return askForInput();
 }
 int PlayerHuman::askForInput()
 {
