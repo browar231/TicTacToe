@@ -49,9 +49,10 @@ void TicTacToe::step()
 		terminate();
 		return;
 	}
-	int selectedField = m_players[m_currentPlayer]->move(m_allowed);
-	m_allowed[selectedField] = false;
-	m_board[selectedField] = (m_currentPlayer % 2) ? 'x' : 'o';
+	nextPlayer();
+}
+void TicTacToe::nextPlayer()
+{
 	m_currentPlayer += 1;
 	m_currentPlayer %= 2;
 }

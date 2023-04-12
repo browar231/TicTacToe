@@ -21,6 +21,7 @@ private:
 	Player* m_players[2];
 	PlayerID m_currentPlayer { 0 };
 	bool isGameWon();
+	void nextPlayer();
 	bool checkCol(const int);
 	bool checkRow(const int);
 	bool checkAllCols();
