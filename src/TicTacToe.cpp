@@ -148,7 +148,7 @@ bool TicTacToe::checkRow(const int row)
 }
 bool TicTacToe::checkAllRows()
 {
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 9; i += 3) {
 		if (checkRow(i)) {
 			return true;
 		}
