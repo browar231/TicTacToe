@@ -13,7 +13,7 @@ TicTacToe::TicTacToe(Player* player1, Player* player2)
 	m_players[1] = player2;
 	initGame();
 }
-TicTacToe::TicTacToe(int numberOfHumanPlayers)
+TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 {
 	switch (numberOfHumanPlayers) {
 	case 0:
@@ -114,7 +114,7 @@ bool TicTacToe::isGameWon()
 	}
 	return false;
 }
-bool TicTacToe::checkRow(int row)
+bool TicTacToe::checkRow(const int row)
 {
 	if (m_board[row] == m_board[row + 1] && m_board[row + 1] == m_board[row + 2]) {
 		return true;
@@ -130,7 +130,7 @@ bool TicTacToe::checkAllRows()
 	}
 	return false;
 }
-bool TicTacToe::checkCol(int col)
+bool TicTacToe::checkCol(const int col)
 {
 	if (m_board[col] == m_board[col + 3] && m_board[col + 3] == m_board[col + 6]) {
 		return true;

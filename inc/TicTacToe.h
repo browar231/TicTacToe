@@ -6,7 +6,7 @@ public:
 	typedef int PlayerID;
 	TicTacToe();
 	TicTacToe(Player*, Player*);
-	TicTacToe(int numberOfHumanPlayers);
+	TicTacToe(const int numberOfHumanPlayers);
 	~TicTacToe();
 	bool isRunning();
 	static void intro();
@@ -22,8 +22,8 @@ private:
 	Player* m_players[2];
 	PlayerID m_currentPlayer { 0 };
 	bool isGameWon();
-	bool checkCol(int);
-	bool checkRow(int);
+	bool checkCol(const int);
+	bool checkRow(const int);
 	bool checkAllCols();
 	bool checkAllRows();
 	bool checkDiagonals();
