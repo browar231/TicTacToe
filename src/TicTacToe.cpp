@@ -1,5 +1,6 @@
 #include "TicTacToe.h"
 #include <iostream>
+#include <stdlib.h>
 #include <string>
 TicTacToe::TicTacToe()
 {
@@ -63,6 +64,10 @@ void TicTacToe::nextPlayer()
 {
 	m_currentPlayer += 1;
 	m_currentPlayer %= 2;
+}
+void TicTacToe::clearConsole()
+{
+	system("clear");
 }
 void TicTacToe::printBoard()
 {

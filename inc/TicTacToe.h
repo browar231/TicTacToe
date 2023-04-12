@@ -12,6 +12,7 @@ public:
 	static std::string getInputFromConsole();
 	void terminate();
 	void step();
+	void clearConsole();
 	void printBoard();
 
 private:

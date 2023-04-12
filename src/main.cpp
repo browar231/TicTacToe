@@ -1,6 +1,5 @@
 #include "TicTacToe.h"
 #include <iostream>
-#include <stdlib.h>
 int main()
 {
 	int players;
@@ -12,7 +11,7 @@ int main()
 		TicTacToe game(players);
 		game.intro();
 		while (game.isRunning()) {
-			system("clear");
+			game.clearConsole();
 			game.printBoard();
 			game.step();
 		};
