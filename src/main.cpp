@@ -9,10 +9,10 @@ int main()
 	std::cin >> players;
 	do {
 		TicTacToe game(players);
+		game.clearConsole();
+		game.printBoard();
 		game.intro();
 		while (game.isRunning()) {
-			game.clearConsole();
-			game.printBoard();
 			game.step();
 		};
 		char input;
