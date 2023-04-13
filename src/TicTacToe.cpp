@@ -38,7 +38,7 @@ void TicTacToe::step()
 	std::cout << "Player: " << m_players[m_currentPlayer]->getName() << std::endl;
 	int selectedField;
 	while (true) {
-		selectedField = m_players[m_currentPlayer]->ProvideField(m_allowed);
+		selectedField = m_players[m_currentPlayer]->provideField(m_allowed);
 		if (isMoveAllowed(selectedField)) {
 			break;
 		}

@@ -1,10 +1,11 @@
 #pragma once
+#include <array>
 #include <string>
 class Player {
 public:
 	Player(std::string name)
 		: m_name(name) {};
-	virtual int ProvideField(const bool allowed[9]) = 0;
+	virtual int provideField(const std::array<bool, 9>& allowed) = 0;
 	std::string getName();
 
 private:
@@ -17,7 +18,7 @@ public:
 		: Player("Player #" + std::to_string(s_id++)) {};
 	PlayerHuman(std::string name)
 		: Player(name) {};
-	int ProvideField(const bool allowed[9]) override;
+	int provideField(const std::array<bool, 9>& allowed) override;
 
 private:
 	static int s_id;
@@ -30,9 +31,9 @@ public:
 		: Player("CPU #" + std::to_string(s_id++)) {};
 	PlayerCPU(std::string name)
 		: Player(name) {};
-	int ProvideField(const bool allowed[9]) override;
-	int returnFirstAllowedField(const bool allowed[9]);
-	int returnRandomField(const bool allowed[9]);
+	int provideField(const std::array<bool, 9>& allowed) override;
+	int returnFirstAllowedField(const std::array<bool, 9>& allowed);
+	int returnRandomField(const std::array<bool, 9>& allowed);
 
 private:
 	static int s_id;

@@ -1,5 +1,6 @@
 #pragma once
 #include "Players.h"
+#include <array>
 #include <memory>
 #include <string>
 #include <vector>
@@ -17,8 +18,8 @@ public:
 
 private:
 	bool m_running { true };
-	char m_board[9];
-	bool m_allowed[9];
+	std::array<char, 9> m_board;
+	std::array<bool, 9> m_allowed;
 	std::vector<std::unique_ptr<Player>> m_players;
 	int m_currentPlayer { 0 };
 	void initGame();
