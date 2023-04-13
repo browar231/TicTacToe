@@ -1,12 +1,13 @@
 #pragma once
 #include "Players.h"
+#include <memory>
 #include <string>
+#include <vector>
 class TicTacToe {
 public:
 	typedef int PlayerID;
 	TicTacToe();
 	TicTacToe(const int numberOfHumanPlayers);
-	~TicTacToe();
 	bool isRunning();
 	static void intro();
 	static std::string getInputFromConsole();
@@ -19,7 +20,7 @@ private:
 	bool m_running { true };
 	char m_board[9];
 	bool m_allowed[9];
-	Player* m_players[2];
+	std::vector<std::unique_ptr<Player>> m_players;
 	PlayerID m_currentPlayer { 0 };
 	bool isGameWon();
 	bool isMoveAllowed(const int field);

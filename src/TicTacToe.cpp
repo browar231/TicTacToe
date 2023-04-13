@@ -1,35 +1,32 @@
 #include "TicTacToe.h"
 #include <iostream>
+#include <memory>
 #include <stdlib.h>
 #include <string>
+#include <vector>
 TicTacToe::TicTacToe()
 {
-	m_players[0] = new PlayerHuman;
-	m_players[1] = new PlayerCPU;
+	m_players.push_back(std::make_unique<PlayerHuman>());
+	m_players.push_back(std::make_unique<PlayerCPU>());
 	initGame();
 }
 TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 {
 	switch (numberOfHumanPlayers) {
 	case 0:
-		m_players[0] = new PlayerCPU("CPU 1");
-		m_players[1] = new PlayerCPU("CPU 2");
+		m_players.push_back(std::make_unique<PlayerCPU>("CPU 1"));
+		m_players.push_back(std::make_unique<PlayerCPU>("CPU 2"));
 		break;
 	case 1:
-		m_players[0] = new PlayerHuman("Player");
-		m_players[1] = new PlayerCPU("CPU");
+		m_players.push_back(std::make_unique<PlayerHuman>("Player"));
+		m_players.push_back(std::make_unique<PlayerCPU>("CPU"));
 		break;
 	case 2:
 	default:
-		m_players[0] = new PlayerHuman("Player 1");
-		m_players[1] = new PlayerHuman("Player 2");
+		m_players.push_back(std::make_unique<PlayerHuman>("Player 1"));
+		m_players.push_back(std::make_unique<PlayerHuman>("Player 2"));
 	}
 	initGame();
-}
-TicTacToe::~TicTacToe()
-{
-	delete m_players[0];
-	delete m_players[1];
 }
 void TicTacToe::initGame()
 {
