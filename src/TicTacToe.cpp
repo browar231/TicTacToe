@@ -43,8 +43,7 @@ void TicTacToe::step()
 			break;
 		}
 	}
-	m_allowed[selectedField] = false;
-	m_board[selectedField] = returnPlayerSign(m_currentPlayer);
+	takeFieldOnBoard(selectedField, returnPlayerSign(m_currentPlayer));
 	clearConsole();
 	printBoard();
 	if (isGameWon()) {
@@ -59,6 +58,11 @@ void TicTacToe::step()
 		return;
 	}
 	nextPlayer();
+}
+void TicTacToe::takeFieldOnBoard(const int field, const char sign)
+{
+	m_allowed[field] = false;
+	m_board[field] = sign;
 }
 char TicTacToe::returnPlayerSign(const PlayerID player)
 {

@@ -24,6 +24,7 @@ private:
 	PlayerID m_currentPlayer { 0 };
 	bool isGameWon();
 	bool isMoveAllowed(const int field);
+	void takeFieldOnBoard(const int field, const char sign);
 	void nextPlayer();
 	char returnPlayerSign(const PlayerID player);
 	bool checkCol(const int);
