@@ -36,7 +36,7 @@ void TicTacToe::step()
 	printBoard();
 	if (m_board.isGameWon()) {
 		std::cout << std::endl
-				  << m_players[m_currentPlayer]->getName() << " - " << returnPlayerSign(m_currentPlayer) << " won!" << std::endl;
+				  << m_players[m_currentPlayer]->getName() << "(" << returnPlayerSign(m_currentPlayer) << ") won!" << std::endl;
 		terminate();
 		return;
 	}
@@ -54,9 +54,9 @@ void TicTacToe::printBoard()
 char TicTacToe::returnPlayerSign(const int player)
 {
 	if (player == 0) {
-		return 'x';
+		return 'X';
 	}
-	return 'o';
+	return 'O';
 }
 void TicTacToe::nextPlayer()
 {
