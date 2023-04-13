@@ -1,11 +1,12 @@
 #pragma once
+#include "Board.h"
 #include <array>
 #include <string>
 class Player {
 public:
 	Player(std::string name)
 		: m_name(name) {};
-	virtual int provideField(const std::array<bool, 9>& allowed) = 0;
+	virtual int provideField(Board& board) = 0;
 	std::string getName();
 
 private:
@@ -18,7 +19,7 @@ public:
 		: Player("Player #" + std::to_string(s_id++)) {};
 	PlayerHuman(std::string name)
 		: Player(name) {};
-	int provideField(const std::array<bool, 9>& allowed) override;
+	int provideField(Board& board) override;
 
 private:
 	static int s_id;
@@ -31,9 +32,9 @@ public:
 		: Player("CPU #" + std::to_string(s_id++)) {};
 	PlayerCPU(std::string name)
 		: Player(name) {};
-	int provideField(const std::array<bool, 9>& allowed) override;
-	int returnFirstAllowedField(const std::array<bool, 9>& allowed);
-	int returnRandomField(const std::array<bool, 9>& allowed);
+	int provideField(Board& board) override;
+	int returnFirstAllowedField(Board& board);
+	int returnRandomField(Board& board);
 
 private:
 	static int s_id;
