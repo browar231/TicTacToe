@@ -64,7 +64,7 @@ void TicTacToe::takeFieldOnBoard(const int field, const char sign)
 	m_allowed[field] = false;
 	m_board[field] = sign;
 }
-char TicTacToe::returnPlayerSign(const PlayerID player)
+char TicTacToe::returnPlayerSign(const int player)
 {
 	if (player == 0) {
 		return 'x';

@@ -5,7 +5,6 @@
 #include <vector>
 class TicTacToe {
 public:
-	typedef int PlayerID;
 	TicTacToe();
 	TicTacToe(const int numberOfHumanPlayers);
 	static void intro();
@@ -21,7 +20,7 @@ private:
 	char m_board[9];
 	bool m_allowed[9];
 	std::vector<std::unique_ptr<Player>> m_players;
-	PlayerID m_currentPlayer { 0 };
+	int m_currentPlayer { 0 };
 	void initGame();
 	void initializeAllowed();
 	void initializeBoard();
@@ -35,5 +34,5 @@ private:
 	bool checkDiagonals();
 	void takeFieldOnBoard(const int field, const char sign);
 	void nextPlayer();
-	char returnPlayerSign(const PlayerID player);
+	char returnPlayerSign(const int player);
 };
