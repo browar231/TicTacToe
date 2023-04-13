@@ -8,7 +8,7 @@ std::string Player::getName()
 {
 	return m_name;
 }
-int PlayerHuman::move(const bool allowed[9])
+int PlayerHuman::ProvideField(const bool allowed[9])
 {
 	return askForInput();
 }
@@ -19,14 +19,14 @@ int PlayerHuman::askForInput()
 	std::cin >> field;
 	return field;
 }
-int PlayerCPU::move(const bool allowed[9])
+int PlayerCPU::ProvideField(const bool allowed[9])
 {
 	using namespace std::chrono_literals;
 	std::this_thread::sleep_for(1000ms);
-	return moveRandom(allowed);
+	return returnRandomField(allowed);
 	return 0;
 }
-int PlayerCPU::moveFirstAllowed(const bool allowed[9])
+int PlayerCPU::returnFirstAllowedField(const bool allowed[9])
 {
 	for (int i = 0; i < 9; i++) {
 		if (allowed[i]) {
@@ -35,7 +35,7 @@ int PlayerCPU::moveFirstAllowed(const bool allowed[9])
 	};
 	return 0;
 }
-int PlayerCPU::moveRandom(const bool allowed[9])
+int PlayerCPU::returnRandomField(const bool allowed[9])
 {
 	std::vector<int> allowedFields;
 	for (int i = 0; i < 9; i++) {

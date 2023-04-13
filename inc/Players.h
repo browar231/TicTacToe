@@ -4,7 +4,7 @@ class Player {
 public:
 	Player(std::string name)
 		: m_name(name) {};
-	virtual int move(const bool allowed[9]) = 0;
+	virtual int ProvideField(const bool allowed[9]) = 0;
 	std::string getName();
 
 private:
@@ -17,7 +17,7 @@ public:
 		: Player("Player #" + std::to_string(s_id++)) {};
 	PlayerHuman(std::string name)
 		: Player(name) {};
-	int move(const bool allowed[9]) override;
+	int ProvideField(const bool allowed[9]) override;
 
 private:
 	static int s_id;
@@ -30,9 +30,9 @@ public:
 		: Player("CPU #" + std::to_string(s_id++)) {};
 	PlayerCPU(std::string name)
 		: Player(name) {};
-	int move(const bool allowed[9]) override;
-	int moveFirstAllowed(const bool allowed[9]);
-	int moveRandom(const bool allowed[9]);
+	int ProvideField(const bool allowed[9]) override;
+	int returnFirstAllowedField(const bool allowed[9]);
+	int returnRandomField(const bool allowed[9]);
 
 private:
 	static int s_id;
