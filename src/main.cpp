@@ -2,16 +2,16 @@
 #include <iostream>
 int main()
 {
-	int players;
+	int playersAmount;
 	std::cout << "0 - two CPU players" << std::endl
 			  << "1 - play with CPU" << std::endl
 			  << "2 - two players" << std::endl;
-	std::cin >> players;
+	std::cin >> playersAmount;
+	TicTacToe::intro();
 	do {
-		TicTacToe game(players);
+		TicTacToe game(playersAmount);
 		game.clearConsole();
 		game.printBoard();
-		game.intro();
 		while (game.isRunning()) {
 			game.step();
 		};

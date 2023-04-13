@@ -4,11 +4,6 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
-TicTacToe::TicTacToe()
-{
-	m_players.push_back(std::make_unique<PlayerHuman>());
-	m_players.push_back(std::make_unique<PlayerCPU>());
-}
 TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 {
 	switch (numberOfHumanPlayers) {

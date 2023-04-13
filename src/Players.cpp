@@ -4,10 +4,12 @@
 #include <random>
 #include <thread>
 #include <vector>
+// Player
 std::string Player::getName()
 {
 	return m_name;
 }
+// PlayerHuman
 int PlayerHuman::provideField(Board& board)
 {
 	return askForInput();
@@ -19,6 +21,7 @@ int PlayerHuman::askForInput()
 	std::cin >> field;
 	return field;
 }
+// PlayerCPU
 int PlayerCPU::provideField(Board& board)
 {
 	using namespace std::chrono_literals;
@@ -48,5 +51,3 @@ int PlayerCPU::returnRandomField(Board& board)
 	std::uniform_int_distribution<> distr(0, allowedFields.size());
 	return allowedFields[distr(gen)];
 }
-int PlayerHuman::s_id = 1;
-int PlayerCPU::s_id = 1;
