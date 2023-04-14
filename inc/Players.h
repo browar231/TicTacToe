@@ -4,7 +4,7 @@
 #include <string>
 class Player {
 public:
-	Player(std::string name)
+	Player(const std::string& name)
 		: m_name(name) {};
 	virtual int provideField(const Board& board) const = 0;
 	const std::string& getName() const;
@@ -15,7 +15,7 @@ private:
 // Human player
 class PlayerHuman : public Player {
 public:
-	PlayerHuman(std::string name)
+	PlayerHuman(const std::string& name)
 		: Player(name) {};
 	int provideField(const Board& board) const override;
 
@@ -25,7 +25,7 @@ private:
 // CPU Player
 class PlayerCPU : public Player {
 public:
-	PlayerCPU(std::string name)
+	PlayerCPU(const std::string& name)
 		: Player(name) {};
 	int provideField(const Board& board) const override;
 	int returnFirstAllowedField(const Board& board) const;
