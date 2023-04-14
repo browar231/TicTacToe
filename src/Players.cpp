@@ -29,7 +29,7 @@ int PlayerCPU::provideField(const Board& board)
 {
 	using namespace std::chrono_literals;
 	std::this_thread::sleep_for(1000ms);
-	return returnFirstAllowedField(board);
+	return returnRandomField(board);
 	return 0;
 }
 int PlayerCPU::returnFirstAllowedField(const Board& board)
