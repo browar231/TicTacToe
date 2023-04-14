@@ -1,35 +1,34 @@
 #include "Board.h"
+#include <algorithm>
 #include <iostream>
+
 Board::Board()
 {
 	for (int i = 0; i < 9; i++) {
 		m_board[i] = i + '0';
-		m_allowed[i] = true;
+		m_allowedFieldsIds.push_back(i);
 	};
 }
-std::array<bool, 9> const& Board::getAllowedArray() const
+std::vector<int> const& Board::returnAllowedIds() const
 {
-	return m_allowed;
+	return m_allowedFieldsIds;
 }
 void Board::takeFieldOnBoard(const int field, const char sign)
 {
-	m_allowed[field] = false;
 	m_board[field] = sign;
+	m_allowedFieldsIds.erase(std::remove(m_allowedFieldsIds.begin(), m_allowedFieldsIds.end(), field), m_allowedFieldsIds.end());
 }
 bool Board::isMoveAllowed(const int field) const
 {
-	if (field >= 0 && field < 9) {
-		return m_allowed[field];
+	auto it = std::find(m_allowedFieldsIds.begin(), m_allowedFieldsIds.end(), field);
+	if (it != m_allowedFieldsIds.end()) {
+		return true;
 	}
 	return false;
 }
 bool Board::areThereFreeFields()
 {
-	for (int i = 0; i < 9; i++) {
-		if (m_allowed[i])
-			return true;
-	}
-	return false;
+	return !m_allowedFieldsIds.empty();
 }
 bool Board::isGameWon()
 {

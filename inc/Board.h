@@ -1,18 +1,19 @@
 #pragma once
 #include <array>
+#include <vector>
 class Board {
 public:
 	Board();
 	bool isGameWon();
 	bool isMoveAllowed(const int field) const;
 	bool areThereFreeFields();
-	std::array<bool, 9> const& getAllowedArray() const;
+	std::vector<int> const& returnAllowedIds() const;
 	void takeFieldOnBoard(const int field, const char sign);
 	void printBoard();
 
 private:
 	std::array<char, 9> m_board;
-	std::array<bool, 9> m_allowed;
+	std::vector<int> m_allowedFieldsIds;
 	bool checkCol(const int);
 	bool checkRow(const int);
 	bool checkAllCols();

@@ -34,22 +34,13 @@ int PlayerCPU::provideField(const Board& board)
 }
 int PlayerCPU::returnFirstAllowedField(const Board& board)
 {
-	auto it = std::find(board.getAllowedArray().begin(), board.getAllowedArray().end(), true);
-	if (it != board.getAllowedArray().end()) {
-		return std::distance(board.getAllowedArray().begin(), it);
-	}
-	return 0;
+	return board.returnAllowedIds()[0];
 }
 int PlayerCPU::returnRandomField(const Board& board)
 {
-	std::vector<int> allowedFields;
-	for (int i = 0; i < 9; i++) {
-		if (board.isMoveAllowed(i)) {
-			allowedFields.push_back(i);
-		}
-	}
+
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> distr(0, allowedFields.size());
-	return allowedFields[distr(gen)];
+	std::uniform_int_distribution<> distr(0, board.returnAllowedIds().size() - 1);
+	return board.returnAllowedIds()[distr(gen)];
 }
