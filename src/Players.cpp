@@ -39,8 +39,8 @@ int PlayerCPU::returnFirstAllowedField(const Board& board)
 int PlayerCPU::returnRandomField(const Board& board)
 {
 
-	std::random_device rd;
-	std::mt19937 gen(rd());
+	static std::random_device rd;
+	static std::mt19937 gen(rd());
 	std::uniform_int_distribution<> distr(0, board.returnAllowedIds().size() - 1);
 	return board.returnAllowedIds()[distr(gen)];
 }
