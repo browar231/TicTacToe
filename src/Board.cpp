@@ -4,6 +4,7 @@
 
 Board::Board()
 {
+	m_allowedFieldsIds.reserve(9);
 	for (int i = 0; i < 9; i++) {
 		m_board[i] = i + '0';
 		m_allowedFieldsIds.push_back(i);
