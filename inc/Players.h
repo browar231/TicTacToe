@@ -6,7 +6,7 @@ class Player {
 public:
 	Player(std::string name)
 		: m_name(name) {};
-	virtual int provideField(Board& board) = 0;
+	virtual int provideField(const Board& board) = 0;
 	std::string getName();
 
 private:
@@ -17,7 +17,7 @@ class PlayerHuman : public Player {
 public:
 	PlayerHuman(std::string name)
 		: Player(name) {};
-	int provideField(Board& board) override;
+	int provideField(const Board& board) override;
 
 private:
 	int askForInput();
@@ -27,7 +27,7 @@ class PlayerCPU : public Player {
 public:
 	PlayerCPU(std::string name)
 		: Player(name) {};
-	int provideField(Board& board) override;
-	int returnFirstAllowedField(Board& board);
-	int returnRandomField(Board& board);
+	int provideField(const Board& board) override;
+	int returnFirstAllowedField(const Board& board);
+	int returnRandomField(const Board& board);
 };
