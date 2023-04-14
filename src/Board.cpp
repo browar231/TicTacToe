@@ -93,4 +93,5 @@ void Board::printBoard() const
 			std::cout << "_____" << std::endl;
 		}
 	}
+	std::cout << std::endl;
 }
