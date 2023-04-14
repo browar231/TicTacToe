@@ -4,9 +4,9 @@ class Board {
 public:
 	Board();
 	bool isGameWon();
-	bool isMoveAllowed(const int field);
+	bool isMoveAllowed(const int field) const;
 	bool areThereFreeFields();
-	std::array<bool, 9> getAllowedArray();
+	std::array<bool, 9> getAllowedArray() const;
 	void takeFieldOnBoard(const int field, const char sign);
 	void printBoard();
 

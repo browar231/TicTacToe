@@ -7,7 +7,7 @@ Board::Board()
 		m_allowed[i] = true;
 	};
 }
-std::array<bool, 9> Board::getAllowedArray()
+std::array<bool, 9> Board::getAllowedArray() const
 {
 	return m_allowed;
 }
@@ -16,7 +16,7 @@ void Board::takeFieldOnBoard(const int field, const char sign)
 	m_allowed[field] = false;
 	m_board[field] = sign;
 }
-bool Board::isMoveAllowed(const int field)
+bool Board::isMoveAllowed(const int field) const
 {
 	if (field >= 0 && field < 9) {
 		return m_allowed[field];
