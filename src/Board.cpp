@@ -7,7 +7,7 @@ Board::Board()
 		m_allowed[i] = true;
 	};
 }
-std::array<bool, 9> Board::getAllowedArray() const
+std::array<bool, 9> const& Board::getAllowedArray() const
 {
 	return m_allowed;
 }

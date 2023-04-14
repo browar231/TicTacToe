@@ -6,7 +6,7 @@ public:
 	bool isGameWon();
 	bool isMoveAllowed(const int field) const;
 	bool areThereFreeFields();
-	std::array<bool, 9> getAllowedArray() const;
+	std::array<bool, 9> const& getAllowedArray() const;
 	void takeFieldOnBoard(const int field, const char sign);
 	void printBoard();
 
