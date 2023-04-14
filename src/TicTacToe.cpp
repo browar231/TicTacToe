@@ -29,6 +29,8 @@ void TicTacToe::step()
 		selectedField = m_players[m_currentPlayer]->provideField(m_board);
 		if (m_board.isMoveAllowed(selectedField)) {
 			break;
+		} else {
+			std::cout << "Invalid move" << std::endl;
 		}
 	}
 	m_board.takeFieldOnBoard(selectedField, returnPlayerSign(m_currentPlayer));
