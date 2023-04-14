@@ -8,16 +8,16 @@
 #include <thread>
 #include <vector>
 // Player
-std::string Player::getName()
+const std::string& Player::getName() const
 {
 	return m_name;
 }
 // PlayerHuman
-int PlayerHuman::provideField(const Board& board)
+int PlayerHuman::provideField(const Board& board) const
 {
 	return askForInput();
 }
-int PlayerHuman::askForInput()
+int PlayerHuman::askForInput() const
 {
 	int field;
 	std::cout << "Field #";
@@ -25,18 +25,18 @@ int PlayerHuman::askForInput()
 	return field;
 }
 // PlayerCPU
-int PlayerCPU::provideField(const Board& board)
+int PlayerCPU::provideField(const Board& board) const
 {
 	using namespace std::chrono_literals;
 	std::this_thread::sleep_for(1000ms);
 	return returnRandomField(board);
 	return 0;
 }
-int PlayerCPU::returnFirstAllowedField(const Board& board)
+int PlayerCPU::returnFirstAllowedField(const Board& board) const
 {
 	return board.returnAllowedIds()[0];
 }
-int PlayerCPU::returnRandomField(const Board& board)
+int PlayerCPU::returnRandomField(const Board& board) const
 {
 
 	static std::random_device rd;

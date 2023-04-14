@@ -4,19 +4,19 @@
 class Board {
 public:
 	Board();
-	bool isGameWon();
+	bool isGameWon() const;
 	bool isMoveAllowed(const int field) const;
-	bool areThereFreeFields();
-	std::vector<int> const& returnAllowedIds() const;
+	bool areThereFreeFields() const;
+	const std::vector<int>& returnAllowedIds() const;
 	void takeFieldOnBoard(const int field, const char sign);
-	void printBoard();
+	void printBoard() const;
 
 private:
 	std::array<char, 9> m_board;
 	std::vector<int> m_allowedFieldsIds;
-	bool checkCol(const int);
-	bool checkRow(const int);
-	bool checkAllCols();
-	bool checkAllRows();
-	bool checkDiagonals();
+	bool checkCol(const int) const;
+	bool checkRow(const int) const;
+	bool checkAllCols() const;
+	bool checkAllRows() const;
+	bool checkDiagonals() const;
 };

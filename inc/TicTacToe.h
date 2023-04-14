@@ -11,9 +11,9 @@ public:
 	static void intro();
 	static std::string getInputFromConsole();
 	static void clearConsole();
-	void printBoard();
+	void printBoard() const;
 	void step();
-	bool isRunning();
+	bool isRunning() const;
 	void terminate();
 
 private:
@@ -22,5 +22,5 @@ private:
 	std::vector<std::unique_ptr<Player>> m_players;
 	Board m_board;
 	void nextPlayer();
-	char returnPlayerSign(const int player);
+	char returnPlayerSign(const int player) const;
 };

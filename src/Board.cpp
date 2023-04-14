@@ -9,7 +9,7 @@ Board::Board()
 		m_allowedFieldsIds.push_back(i);
 	};
 }
-std::vector<int> const& Board::returnAllowedIds() const
+const std::vector<int>& Board::returnAllowedIds() const
 {
 	return m_allowedFieldsIds;
 }
@@ -26,11 +26,11 @@ bool Board::isMoveAllowed(const int field) const
 	}
 	return false;
 }
-bool Board::areThereFreeFields()
+bool Board::areThereFreeFields() const
 {
 	return !m_allowedFieldsIds.empty();
 }
-bool Board::isGameWon()
+bool Board::isGameWon() const
 {
 	if (checkAllCols()) {
 		return true;
@@ -43,14 +43,14 @@ bool Board::isGameWon()
 	}
 	return false;
 }
-bool Board::checkRow(const int row)
+bool Board::checkRow(const int row) const
 {
 	if (m_board[row] == m_board[row + 1] && m_board[row + 1] == m_board[row + 2]) {
 		return true;
 	}
 	return false;
 }
-bool Board::checkAllRows()
+bool Board::checkAllRows() const
 {
 	for (int i = 0; i < 9; i += 3) {
 		if (checkRow(i)) {
@@ -59,14 +59,14 @@ bool Board::checkAllRows()
 	}
 	return false;
 }
-bool Board::checkCol(const int col)
+bool Board::checkCol(const int col) const
 {
 	if (m_board[col] == m_board[col + 3] && m_board[col + 3] == m_board[col + 6]) {
 		return true;
 	}
 	return false;
 }
-bool Board::checkAllCols()
+bool Board::checkAllCols() const
 {
 	for (int i = 0; i < 3; i++) {
 		if (checkCol(i)) {
@@ -75,7 +75,7 @@ bool Board::checkAllCols()
 	}
 	return false;
 }
-bool Board::checkDiagonals()
+bool Board::checkDiagonals() const
 {
 	if (m_board[0] == m_board[4] && m_board[4] == m_board[8]) {
 		return true;
@@ -85,7 +85,7 @@ bool Board::checkDiagonals()
 	}
 	return false;
 }
-void Board::printBoard()
+void Board::printBoard() const
 {
 	for (int i = 0; i < 9; i += 3) {
 		std::cout << m_board[i] << '|' << m_board[i + 1] << '|' << m_board[i + 2] << std::endl;

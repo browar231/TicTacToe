@@ -49,11 +49,11 @@ void TicTacToe::step()
 	}
 	nextPlayer();
 }
-void TicTacToe::printBoard()
+void TicTacToe::printBoard() const
 {
 	m_board.printBoard();
 }
-char TicTacToe::returnPlayerSign(const int player)
+char TicTacToe::returnPlayerSign(const int player) const
 {
 	if (player == 0) {
 		return 'X';
@@ -80,7 +80,7 @@ std::string TicTacToe::getInputFromConsole()
 	std::cin >> input;
 	return input;
 }
-bool TicTacToe::isRunning()
+bool TicTacToe::isRunning() const
 {
 	return m_running;
 }
