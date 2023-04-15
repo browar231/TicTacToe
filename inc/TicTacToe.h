@@ -18,9 +18,8 @@ public:
 
 private:
 	bool m_running { true };
-	int m_currentPlayer { 0 };
 	std::vector<std::unique_ptr<Player>> m_players;
 	Board m_board;
-	void nextPlayer();
+	int currentPlayerId();
 	char returnPlayerSign(const int player) const;
 };

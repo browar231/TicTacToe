@@ -23,22 +23,23 @@ TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 }
 void TicTacToe::step()
 {
-	std::cout << "Player: " << m_players[m_currentPlayer]->getName() << '\n';
+	std::cout << "Player: " << m_players[currentPlayerId()]->getName() << '\n';
 	int selectedField;
 	while (true) {
-		selectedField = m_players[m_currentPlayer]->provideField(m_board);
+		selectedField = m_players[currentPlayerId()]->provideField(m_board);
 		if (m_board.isMoveAllowed(selectedField)) {
 			break;
 		} else {
 			std::cout << "Invalid move\n";
 		}
 	}
-	m_board.takeFieldOnBoard(selectedField, returnPlayerSign(m_currentPlayer));
+	m_board.takeFieldOnBoard(selectedField, returnPlayerSign(currentPlayerId()));
 	clearConsole();
 	printBoard();
 	if (m_board.isGameWon()) {
+		// TODO: find a way to not use !
 		std::cout
-			<< m_players[m_currentPlayer]->getName() << "(" << returnPlayerSign(m_currentPlayer) << ") won!\n";
+			<< m_players[!currentPlayerId()]->getName() << "(" << returnPlayerSign(!currentPlayerId()) << ") won!\n";
 		terminate();
 		return;
 	}
@@ -47,7 +48,6 @@ void TicTacToe::step()
 		terminate();
 		return;
 	}
-	nextPlayer();
 }
 void TicTacToe::printBoard() const
 {
@@ -60,10 +60,9 @@ char TicTacToe::returnPlayerSign(const int player) const
 	}
 	return 'O';
 }
-void TicTacToe::nextPlayer()
+int TicTacToe::currentPlayerId()
 {
-	m_currentPlayer += 1;
-	m_currentPlayer %= 2;
+	return m_board.returnAllowedIds().size() % 2;
 }
 void TicTacToe::clearConsole()
 {
