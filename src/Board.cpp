@@ -89,10 +89,10 @@ bool Board::checkDiagonals() const
 void Board::printBoard() const
 {
 	for (int i = 0; i < 9; i += 3) {
-		std::cout << m_board[i] << '|' << m_board[i + 1] << '|' << m_board[i + 2] << std::endl;
+		std::cout << m_board[i] << '|' << m_board[i + 1] << '|' << m_board[i + 2] << '\n';
 		if (i < 6) {
-			std::cout << "_____" << std::endl;
+			std::cout << "_____\n";
 		}
 	}
-	std::cout << std::endl;
+	std::cout << '\n';
 }

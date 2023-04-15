@@ -23,14 +23,14 @@ TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 }
 void TicTacToe::step()
 {
-	std::cout << "Player: " << m_players[m_currentPlayer]->getName() << std::endl;
+	std::cout << "Player: " << m_players[m_currentPlayer]->getName() << '\n';
 	int selectedField;
 	while (true) {
 		selectedField = m_players[m_currentPlayer]->provideField(m_board);
 		if (m_board.isMoveAllowed(selectedField)) {
 			break;
 		} else {
-			std::cout << "Invalid move" << std::endl;
+			std::cout << "Invalid move\n";
 		}
 	}
 	m_board.takeFieldOnBoard(selectedField, returnPlayerSign(m_currentPlayer));
@@ -38,12 +38,12 @@ void TicTacToe::step()
 	printBoard();
 	if (m_board.isGameWon()) {
 		std::cout
-			<< m_players[m_currentPlayer]->getName() << "(" << returnPlayerSign(m_currentPlayer) << ") won!" << std::endl;
+			<< m_players[m_currentPlayer]->getName() << "(" << returnPlayerSign(m_currentPlayer) << ") won!\n";
 		terminate();
 		return;
 	}
 	if (!m_board.areThereFreeFields()) {
-		std::cout << "Game ended" << std::endl;
+		std::cout << "Game ended\n";
 		terminate();
 		return;
 	}
@@ -71,8 +71,8 @@ void TicTacToe::clearConsole()
 }
 void TicTacToe::intro()
 {
-	std::cout << "Tic Tac Toe game" << std::endl;
-	std::cout << "To make a move, enter number of field" << std::endl;
+	std::cout << "Tic Tac Toe game\n"
+			  << "To make a move, enter number of field\n";
 }
 std::string TicTacToe::getInputFromConsole()
 {

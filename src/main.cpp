@@ -3,9 +3,9 @@
 int main()
 {
 	int playersAmount;
-	std::cout << "0 - two CPU players" << std::endl
-			  << "1 - play with CPU" << std::endl
-			  << "2 - two players" << std::endl;
+	std::cout << "0 - two CPU players\n"
+			  << "1 - play with CPU\n"
+			  << "2 - two players\n";
 	std::cin >> playersAmount;
 	TicTacToe::intro();
 	do {
