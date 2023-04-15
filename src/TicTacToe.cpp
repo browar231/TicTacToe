@@ -60,7 +60,7 @@ char TicTacToe::returnPlayerSign(const int player) const
 	}
 	return 'O';
 }
-int TicTacToe::currentPlayerId()
+int TicTacToe::currentPlayerId() const
 {
 	return m_board.returnAllowedIds().size() % 2;
 }

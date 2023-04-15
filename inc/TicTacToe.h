@@ -20,6 +20,6 @@ private:
 	bool m_running { true };
 	std::vector<std::unique_ptr<Player>> m_players;
 	Board m_board;
-	int currentPlayerId();
+	int currentPlayerId() const;
 	char returnPlayerSign(const int player) const;
 };
