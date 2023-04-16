@@ -8,17 +8,17 @@ TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 {
 	switch (numberOfHumanPlayers) {
 	case 0:
-		m_players.push_back(std::make_unique<PlayerCPU>("CPU 1"));
-		m_players.push_back(std::make_unique<PlayerCPU>("CPU 2"));
+		m_players.push_back(std::make_unique<PlayerCPU>("CPU 1", 'X'));
+		m_players.push_back(std::make_unique<PlayerCPU>("CPU 2", 'O'));
 		break;
 	case 1:
-		m_players.push_back(std::make_unique<PlayerHuman>("Player"));
-		m_players.push_back(std::make_unique<PlayerCPU>("CPU"));
+		m_players.push_back(std::make_unique<PlayerHuman>("Player", 'X'));
+		m_players.push_back(std::make_unique<PlayerCPU>("CPU", 'O'));
 		break;
 	case 2:
 	default:
-		m_players.push_back(std::make_unique<PlayerHuman>("Player 1"));
-		m_players.push_back(std::make_unique<PlayerHuman>("Player 2"));
+		m_players.push_back(std::make_unique<PlayerHuman>("Player 1", 'X'));
+		m_players.push_back(std::make_unique<PlayerHuman>("Player 2", 'O'));
 	}
 }
 void TicTacToe::step()
@@ -34,13 +34,12 @@ void TicTacToe::step()
 			std::cout << "Invalid move\n";
 		}
 	}
-	m_board.takeFieldOnBoard(selectedField, returnPlayerSign(currentPlayerId()));
+	m_board.takeFieldOnBoard(selectedField, currentPlayer->getSign());
 	clearConsole();
 	printBoard();
 	if (m_board.isGameWon()) {
-		// TODO: find a way to not use !
 		std::cout
-			<< currentPlayer->getName() << "(" << returnPlayerSign(!currentPlayerId()) << ") won!\n";
+			<< currentPlayer->getName() << "(" << currentPlayer->getSign() << ") won!\n";
 		terminate();
 		return;
 	}
@@ -53,13 +52,6 @@ void TicTacToe::step()
 void TicTacToe::printBoard() const
 {
 	m_board.printBoard();
-}
-char TicTacToe::returnPlayerSign(const int player) const
-{
-	if (player == 0) {
-		return 'X';
-	}
-	return 'O';
 }
 int TicTacToe::currentPlayerId() const
 {

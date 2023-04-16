@@ -21,5 +21,4 @@ private:
 	std::vector<std::unique_ptr<Player>> m_players;
 	Board m_board;
 	int currentPlayerId() const;
-	char returnPlayerSign(const int player) const;
 };

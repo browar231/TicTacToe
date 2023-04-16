@@ -12,6 +12,10 @@ const std::string& Player::getName() const
 {
 	return m_name;
 }
+char Player::getSign() const
+{
+	return m_sign;
+}
 // PlayerHuman
 int PlayerHuman::provideField(const Board& board) const
 {

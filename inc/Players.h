@@ -4,19 +4,22 @@
 #include <string>
 class Player {
 public:
-	Player(const std::string& name)
-		: m_name(name) {};
+	Player(const std::string& name, char sign)
+		: m_name(name)
+		, m_sign(sign) {};
 	virtual int provideField(const Board& board) const = 0;
 	const std::string& getName() const;
+	char getSign() const;
 
 private:
+	const char m_sign;
 	const std::string m_name;
 };
 // Human player
 class PlayerHuman : public Player {
 public:
-	PlayerHuman(const std::string& name)
-		: Player(name) {};
+	PlayerHuman(const std::string& name, char sign)
+		: Player(name, sign) {};
 	int provideField(const Board& board) const override;
 
 private:
@@ -25,8 +28,8 @@ private:
 // CPU Player
 class PlayerCPU : public Player {
 public:
-	PlayerCPU(const std::string& name)
-		: Player(name) {};
+	PlayerCPU(const std::string& name, char sign)
+		: Player(name, sign) {};
 	int provideField(const Board& board) const override;
 	int returnFirstAllowedField(const Board& board) const;
 	int returnRandomField(const Board& board) const;
