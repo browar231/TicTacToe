@@ -23,10 +23,11 @@ TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 }
 void TicTacToe::step()
 {
-	std::cout << "Player: " << m_players[currentPlayerId()]->getName() << '\n';
+	const auto& currentPlayer = m_players[currentPlayerId()].get();
+	std::cout << "Player: " << currentPlayer->getName() << '\n';
 	int selectedField;
 	while (true) {
-		selectedField = m_players[currentPlayerId()]->provideField(m_board);
+		selectedField = currentPlayer->provideField(m_board);
 		if (m_board.isMoveAllowed(selectedField)) {
 			break;
 		} else {
@@ -39,7 +40,7 @@ void TicTacToe::step()
 	if (m_board.isGameWon()) {
 		// TODO: find a way to not use !
 		std::cout
-			<< m_players[!currentPlayerId()]->getName() << "(" << returnPlayerSign(!currentPlayerId()) << ") won!\n";
+			<< currentPlayer->getName() << "(" << returnPlayerSign(!currentPlayerId()) << ") won!\n";
 		terminate();
 		return;
 	}
