@@ -10,6 +10,9 @@ int main()
 			  << "1 - play with CPU\n"
 			  << "2 - two players\n";
 	Console::getInputUntilSuccess(playersAmount);
+	if (playersAmount < 0 || playersAmount > 2) {
+		return EXIT_SUCCESS;
+	}
 	TicTacToe::intro();
 	do {
 		TicTacToe game(playersAmount);
