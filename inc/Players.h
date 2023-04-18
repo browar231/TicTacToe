@@ -17,6 +17,7 @@ public:
 	char getSign() const;
 
 protected:
+	char returnOpponentSign() const;
 	const char m_sign;
 	const std::string m_name;
 };

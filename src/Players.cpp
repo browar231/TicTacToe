@@ -17,6 +17,13 @@ char Player::getSign() const
 {
 	return m_sign;
 }
+char Player::returnOpponentSign() const
+{
+	if (m_sign == 'O') {
+		return 'X';
+	}
+	return 'O';
+}
 // PlayerHuman
 int PlayerHuman::provideField(const Board& board) const
 {
