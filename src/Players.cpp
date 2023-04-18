@@ -50,6 +50,8 @@ int PlayerCPU::provideField(const Board& board) const
 		return returnWinningOrRandom(board);
 	case PlayerCPU_strategy::WinOrBlock:
 		return returnWinningOrBlocking(board);
+	case PlayerCPU_strategy::BeastMode:
+		return returnBestMove(board);
 	}
 	return 0;
 }
@@ -81,6 +83,40 @@ int PlayerCPU::returnWinningOrRandom(const Board& board) const
 int PlayerCPU::returnWinningOrBlocking(const Board& board) const
 {
 	int field = returnWinningOrRandom(board);
+	for (const int& moveCandidate : board.returnAllowedIds()) {
+		Board sandboxBoard = board;
+		sandboxBoard.takeFieldOnBoard(moveCandidate, returnOpponentSign());
+		if (sandboxBoard.isGameWon()) {
+			return moveCandidate;
+		}
+	}
+	return field;
+}
+
+int PlayerCPU::returnBestMove(const Board& board) const
+{
+	// entry point - first valid option
+	int field = returnFirstAllowedField(board);
+	// avoid edges if possible (in this implementation they have odd identifiers so find first even id)
+	for (const int& moveCandidate : board.returnAllowedIds()) {
+		if (!(moveCandidate % 2)) {
+			field = moveCandidate;
+			break;
+		}
+	}
+	// if opponent didn't choose center, cpu does it
+	if (board.isMoveAllowed(4)) {
+		field = 4;
+	}
+	// but if you can detect winning move - do it!...
+	for (const int& moveCandidate : board.returnAllowedIds()) {
+		Board sandboxBoard = board;
+		sandboxBoard.takeFieldOnBoard(moveCandidate, m_sign);
+		if (sandboxBoard.isGameWon()) {
+			return moveCandidate;
+		}
+	}
+	//... or at least block opponent
 	for (const int& moveCandidate : board.returnAllowedIds()) {
 		Board sandboxBoard = board;
 		sandboxBoard.takeFieldOnBoard(moveCandidate, returnOpponentSign());
