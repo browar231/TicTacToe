@@ -9,7 +9,6 @@ class TicTacToe {
 public:
 	TicTacToe(const int numberOfHumanPlayers);
 	static void intro();
-	static std::string getInputFromConsole();
 	void printBoard() const;
 	void step();
 	bool isRunning() const;

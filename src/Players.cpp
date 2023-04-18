@@ -1,4 +1,5 @@
 #include "Players.h"
+#include "Console.h"
 #include <algorithm>
 #include <array>
 #include <chrono>
@@ -25,7 +26,7 @@ int PlayerHuman::askForInput() const
 {
 	int field;
 	std::cout << "Field #";
-	std::cin >> field;
+	Console::getInputUntilSuccess(field);
 	return field;
 }
 // PlayerCPU

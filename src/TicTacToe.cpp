@@ -62,12 +62,6 @@ void TicTacToe::intro()
 	std::cout << "Tic Tac Toe game\n"
 			  << "To make a move, enter number of field\n";
 }
-std::string TicTacToe::getInputFromConsole()
-{
-	std::string input;
-	std::cin >> input;
-	return input;
-}
 bool TicTacToe::isRunning() const
 {
 	return m_running;
