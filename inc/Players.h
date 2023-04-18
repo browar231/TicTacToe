@@ -5,7 +5,7 @@
 enum class PlayerCPU_strategy {
 	FirstAllowed, // first from allowed moves
 	Random, // random allowed move
-	NoLosingWhenPossible
+	WinIfPossible // cpu will make random move, but won't miss winning moves
 };
 class Player {
 public:
@@ -16,7 +16,7 @@ public:
 	const std::string& getName() const;
 	char getSign() const;
 
-private:
+protected:
 	const char m_sign;
 	const std::string m_name;
 };
@@ -39,6 +39,7 @@ public:
 	int provideField(const Board& board) const override;
 	int returnFirstAllowedField(const Board& board) const;
 	int returnRandomField(const Board& board) const;
+	int returnWinningOrRandom(const Board& board) const;
 
 private:
 	PlayerCPU_strategy m_strategy;
