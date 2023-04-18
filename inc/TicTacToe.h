@@ -10,7 +10,6 @@ public:
 	TicTacToe(const int numberOfHumanPlayers);
 	static void intro();
 	static std::string getInputFromConsole();
-	static void clearConsole();
 	void printBoard() const;
 	void step();
 	bool isRunning() const;

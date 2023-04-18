@@ -1,7 +1,7 @@
 #include "TicTacToe.h"
+#include "Console.h"
 #include <iostream>
 #include <memory>
-#include <stdlib.h>
 #include <string>
 #include <vector>
 TicTacToe::TicTacToe(const int numberOfHumanPlayers)
@@ -35,7 +35,7 @@ void TicTacToe::step()
 		}
 	}
 	m_board.takeFieldOnBoard(selectedField, currentPlayer->getSign());
-	clearConsole();
+	Console::clear();
 	printBoard();
 	if (m_board.isGameWon()) {
 		std::cout
@@ -56,10 +56,6 @@ void TicTacToe::printBoard() const
 int TicTacToe::currentPlayerId() const
 {
 	return m_board.returnAllowedIds().size() % 2;
-}
-void TicTacToe::clearConsole()
-{
-	system("clear");
 }
 void TicTacToe::intro()
 {

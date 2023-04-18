@@ -1,3 +1,4 @@
+#include "Console.h"
 #include "TicTacToe.h"
 #include <iostream>
 int main()
@@ -10,7 +11,7 @@ int main()
 	TicTacToe::intro();
 	do {
 		TicTacToe game(playersAmount);
-		game.clearConsole();
+		Console::clear();
 		game.printBoard();
 		while (game.isRunning()) {
 			game.step();
