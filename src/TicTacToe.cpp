@@ -8,11 +8,11 @@ TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 {
 	switch (numberOfHumanPlayers) {
 	case 0:
-		m_players.push_back(std::make_unique<PlayerCPU>("CPU 1", 'X', PlayerCPU_strategy::WinIfPossible));
-		m_players.push_back(std::make_unique<PlayerCPU>("CPU 2", 'O', PlayerCPU_strategy::WinIfPossible));
+		m_players.push_back(std::make_unique<PlayerCPU>("CPU 1", 'X', PlayerCPU_strategy::WinOrBlock));
+		m_players.push_back(std::make_unique<PlayerCPU>("CPU 2", 'O', PlayerCPU_strategy::WinOrBlock));
 		break;
 	case 1:
-		m_players.push_back(std::make_unique<PlayerCPU>("CPU", 'O', PlayerCPU_strategy::WinIfPossible));
+		m_players.push_back(std::make_unique<PlayerCPU>("CPU", 'O', PlayerCPU_strategy::WinOrBlock));
 		m_players.push_back(std::make_unique<PlayerHuman>("Player", 'X'));
 		break;
 	case 2:

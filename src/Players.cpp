@@ -48,6 +48,8 @@ int PlayerCPU::provideField(const Board& board) const
 		return returnRandomField(board);
 	case PlayerCPU_strategy::WinIfPossible:
 		return returnWinningOrRandom(board);
+	case PlayerCPU_strategy::WinOrBlock:
+		return returnWinningOrBlocking(board);
 	}
 	return 0;
 }
@@ -67,9 +69,22 @@ int PlayerCPU::returnWinningOrRandom(const Board& board) const
 {
 	int field = returnRandomField(board);
 	for (const int& moveCandidate : board.returnAllowedIds()) {
-		Board tempBoard = board;
-		tempBoard.takeFieldOnBoard(moveCandidate, m_sign);
-		if (tempBoard.isGameWon()) {
+		Board sandboxBoard = board;
+		sandboxBoard.takeFieldOnBoard(moveCandidate, m_sign);
+		if (sandboxBoard.isGameWon()) {
+			return moveCandidate;
+		}
+	}
+	return field;
+}
+
+int PlayerCPU::returnWinningOrBlocking(const Board& board) const
+{
+	int field = returnWinningOrRandom(board);
+	for (const int& moveCandidate : board.returnAllowedIds()) {
+		Board sandboxBoard = board;
+		sandboxBoard.takeFieldOnBoard(moveCandidate, returnOpponentSign());
+		if (sandboxBoard.isGameWon()) {
 			return moveCandidate;
 		}
 	}
