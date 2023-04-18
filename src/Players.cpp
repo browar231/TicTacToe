@@ -34,7 +34,12 @@ int PlayerCPU::provideField(const Board& board) const
 {
 	using namespace std::chrono_literals;
 	std::this_thread::sleep_for(1000ms);
-	return returnRandomField(board);
+	switch (m_strategy) {
+	case PlayerCPU_strategy::FirstAllowed:
+		return returnFirstAllowedField(board);
+	case PlayerCPU_strategy::Random:
+		return returnRandomField(board);
+	}
 	return 0;
 }
 int PlayerCPU::returnFirstAllowedField(const Board& board) const
@@ -43,7 +48,6 @@ int PlayerCPU::returnFirstAllowedField(const Board& board) const
 }
 int PlayerCPU::returnRandomField(const Board& board) const
 {
-
 	static std::random_device rd;
 	static std::mt19937 gen(rd());
 	std::uniform_int_distribution<> distr(0, board.returnAllowedIds().size() - 1);

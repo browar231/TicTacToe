@@ -2,6 +2,11 @@
 #include "Board.h"
 #include <array>
 #include <string>
+enum class PlayerCPU_strategy {
+	FirstAllowed, // first from allowed moves
+	Random, // random allowed move
+	NoLosingWhenPossible
+};
 class Player {
 public:
 	Player(const std::string& name, char sign)
@@ -28,9 +33,13 @@ private:
 // CPU Player
 class PlayerCPU : public Player {
 public:
-	PlayerCPU(const std::string& name, char sign)
-		: Player(name, sign) {};
+	PlayerCPU(const std::string& name, char sign, PlayerCPU_strategy strategy)
+		: Player(name, sign)
+		, m_strategy(strategy) {};
 	int provideField(const Board& board) const override;
 	int returnFirstAllowedField(const Board& board) const;
 	int returnRandomField(const Board& board) const;
+
+private:
+	PlayerCPU_strategy m_strategy;
 };
