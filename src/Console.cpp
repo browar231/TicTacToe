@@ -1,10 +1,9 @@
 #include "Console.h"
 #include <iostream>
-#include <stdlib.h>
 #include <string>
 void Console::clear()
 {
-	system("clear");
+	std::cout << "\033[2J";
 }
 
 bool Console::getInput(int& targetVariable)
