@@ -36,5 +36,9 @@ void TicTacToeConsoleApp::printBoard() const
 void TicTacToeConsoleApp::intro()
 {
 	std::cout << "Tic Tac Toe game\n"
-			  << "To make a move, enter number of field\n";
+			  << "To make a move, enter number field id when asked\n"
+			  << "Mode:\n"
+			  << "0 - two CPU players\n"
+			  << "1 - play with CPU\n"
+			  << "2 - two players\n";
 }

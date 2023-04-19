@@ -5,15 +5,11 @@ int main()
 {
 	int playersAmount;
 	Console::clear();
-	std::cout << "Mode:\n"
-			  << "0 - two CPU players\n"
-			  << "1 - play with CPU\n"
-			  << "2 - two players\n";
+	TicTacToeConsoleApp::intro();
 	Console::getInputUntilSuccess(playersAmount);
 	if (playersAmount < 0 || playersAmount > 2) {
 		return EXIT_SUCCESS;
 	}
-	TicTacToeConsoleApp::intro();
 	do {
 		TicTacToeConsoleApp game(playersAmount);
 		game.printBoard();
