@@ -1,5 +1,5 @@
 #include "Console.h"
-#include "TicTacToe.h"
+#include "TicTacToeConsoleApp.h"
 #include <iostream>
 int main()
 {
@@ -13,9 +13,9 @@ int main()
 	if (playersAmount < 0 || playersAmount > 2) {
 		return EXIT_SUCCESS;
 	}
-	TicTacToe::intro();
+	TicTacToeConsoleApp::intro();
 	do {
-		TicTacToe game(playersAmount);
+		TicTacToeConsoleApp game(playersAmount);
 		game.printBoard();
 		while (game.isRunning()) {
 			game.step();
