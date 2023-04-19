@@ -7,7 +7,7 @@ enum class PlayerCPU_strategy {
 	Random, // random allowed move
 	WinIfPossible, // cpu will make random move, but won't miss winning moves
 	WinOrBlock, // like the one before, but when no winning move is possible, cpu will try blocking opponent
-	BeastMode
+	BeastMode // if i implemented it correctly, cpu won't lose
 };
 class Player {
 public:
