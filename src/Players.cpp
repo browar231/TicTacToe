@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <array>
 #include <chrono>
-#include <iostream>
 #include <iterator>
 #include <random>
 #include <thread>
@@ -32,7 +31,6 @@ int PlayerHuman::provideField(const Board& board) const
 int PlayerHuman::askForInput() const
 {
 	int field;
-	std::cout << "Field #";
 	Console::getInputUntilSuccess(field);
 	return field;
 }

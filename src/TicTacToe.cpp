@@ -1,6 +1,6 @@
 #include "TicTacToe.h"
 #include "Console.h"
-#include <iostream>
+// #include <iostream>
 #include <memory>
 #include <string>
 #include <vector>
@@ -24,43 +24,35 @@ TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 void TicTacToe::step()
 {
 	const auto& currentPlayer = m_players[currentPlayerId()].get();
-	std::cout << "Player: " << currentPlayer->getName() << '\n';
+	onBeforeStep();
 	int selectedField;
 	while (true) {
+		onInput();
 		selectedField = currentPlayer->provideField(m_board);
 		if (m_board.isMoveAllowed(selectedField)) {
 			break;
 		} else {
-			std::cout << "Invalid move\n";
+			onInvalidMove();
 		}
 	}
 	m_board.takeFieldOnBoard(selectedField, currentPlayer->getSign());
 	Console::clear();
 	printBoard();
 	if (m_board.isGameWon()) {
-		std::cout
-			<< currentPlayer->getName() << "(" << currentPlayer->getSign() << ") won!\n";
+		onWin();
 		terminate();
 		return;
 	}
 	if (!m_board.areThereFreeFields()) {
-		std::cout << "Game ended\n";
+		onDraw();
 		terminate();
 		return;
 	}
 }
-void TicTacToe::printBoard() const
-{
-	m_board.printBoard();
-}
+
 int TicTacToe::currentPlayerId() const
 {
 	return m_board.returnAllowedIds().size() % 2;
-}
-void TicTacToe::intro()
-{
-	std::cout << "Tic Tac Toe game\n"
-			  << "To make a move, enter number of field\n";
 }
 bool TicTacToe::isRunning() const
 {

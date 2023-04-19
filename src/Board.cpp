@@ -1,6 +1,5 @@
 #include "Board.h"
 #include <algorithm>
-#include <iostream>
 
 Board::Board()
 {
@@ -13,6 +12,10 @@ Board::Board()
 const std::vector<int>& Board::returnAllowedIds() const
 {
 	return m_allowedFieldsIds;
+}
+const std::array<char, 9>& Board::getBoardArray() const
+{
+	return m_board;
 }
 void Board::takeFieldOnBoard(const int field, const char sign)
 {
@@ -85,14 +88,4 @@ bool Board::checkDiagonals() const
 		return true;
 	}
 	return false;
-}
-void Board::printBoard() const
-{
-	for (int i = 0; i < 9; i += 3) {
-		std::cout << m_board[i] << '|' << m_board[i + 1] << '|' << m_board[i + 2] << '\n';
-		if (i < 6) {
-			std::cout << "_____\n";
-		}
-	}
-	std::cout << '\n';
 }

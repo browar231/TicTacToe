@@ -8,13 +8,18 @@
 class TicTacToe {
 public:
 	TicTacToe(const int numberOfHumanPlayers);
-	static void intro();
-	void printBoard() const;
 	void step();
 	bool isRunning() const;
 	void terminate();
+	// for implementation
+	virtual void printBoard() const {};
+	virtual void onBeforeStep() const {};
+	virtual void onInvalidMove() const {};
+	virtual void onWin() const {};
+	virtual void onDraw() const {};
+	virtual void onInput() const {};
 
-private:
+protected:
 	bool m_running { true };
 	std::vector<std::unique_ptr<Player>> m_players;
 	Board m_board;

@@ -8,8 +8,8 @@ public:
 	bool isMoveAllowed(const int field) const;
 	bool areThereFreeFields() const;
 	const std::vector<int>& returnAllowedIds() const;
+	const std::array<char, 9>& getBoardArray() const;
 	void takeFieldOnBoard(const int field, const char sign);
-	void printBoard() const;
 
 private:
 	std::array<char, 9> m_board;
