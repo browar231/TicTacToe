@@ -1,7 +1,7 @@
 #include "TicTacToe.h"
 #include "Console.h"
-// #include <iostream>
 #include <memory>
+#include <random>
 #include <string>
 #include <vector>
 TicTacToe::TicTacToe(const int numberOfHumanPlayers)
@@ -20,6 +20,7 @@ TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 		m_players.push_back(std::make_unique<PlayerHuman>("Player 1", 'X'));
 		m_players.push_back(std::make_unique<PlayerHuman>("Player 2", 'O'));
 	}
+	m_invertPlayers = invertPlayers();
 }
 void TicTacToe::step()
 {
@@ -52,7 +53,7 @@ void TicTacToe::step()
 
 int TicTacToe::currentPlayerId() const
 {
-	return m_board.returnAllowedIds().size() % 2;
+	return (m_board.returnAllowedIds().size() + m_invertPlayers) % 2;
 }
 bool TicTacToe::isRunning() const
 {
@@ -61,4 +62,12 @@ bool TicTacToe::isRunning() const
 void TicTacToe::terminate()
 {
 	m_running = false;
+}
+// randomness in first move
+int TicTacToe::invertPlayers() const
+{
+	static std::random_device rd;
+	static std::mt19937 gen(rd());
+	std::uniform_int_distribution<> distr(0, 1);
+	return distr(gen);
 }
