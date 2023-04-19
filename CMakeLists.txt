@@ -12,6 +12,6 @@ if(UNIX)
     add_executable(${PROJECT_NAME} ${source_files})
 endif()
 target_include_directories(${PROJECT_NAME}
-    PRIVATE 
+    PUBLIC 
     ${PROJECT_SOURCE_DIR}/inc
 )
