@@ -15,7 +15,7 @@ public:
 	virtual void printBoard() const {};
 	virtual void onBeforeStep() const {};
 	virtual void onInvalidMove() const {};
-	virtual void onWin() const {};
+	virtual void onWin(Player* currentPlayer) const {};
 	virtual void onDraw() const {};
 	virtual void onInput() const {};
 

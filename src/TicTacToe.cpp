@@ -39,7 +39,7 @@ void TicTacToe::step()
 	Console::clear();
 	printBoard();
 	if (m_board.isGameWon()) {
-		onWin();
+		onWin(currentPlayer);
 		terminate();
 		return;
 	}

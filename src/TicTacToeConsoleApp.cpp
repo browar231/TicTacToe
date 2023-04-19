@@ -9,9 +9,8 @@ void TicTacToeConsoleApp::onInvalidMove() const
 {
 	std::cout << "Invalid move\n";
 }
-void TicTacToeConsoleApp::onWin() const
+void TicTacToeConsoleApp::onWin(Player* currentPlayer) const
 {
-	const auto& currentPlayer = m_players[currentPlayerId()].get();
 	std::cout
 		<< currentPlayer->getName() << "(" << currentPlayer->getSign() << ") won!\n";
 }

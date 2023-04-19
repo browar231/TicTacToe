@@ -10,7 +10,7 @@ public:
 	void printBoard() const override;
 	void onBeforeStep() const override;
 	void onInvalidMove() const override;
-	void onWin() const override;
+	void onWin(Player* currentPlayer) const override;
 	void onDraw() const override;
 	void onInput() const override;
 };
