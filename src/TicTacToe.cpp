@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 TicTacToe::TicTacToe(const int numberOfHumanPlayers)
+	: m_invertPlayers(randomZeroOrOne())
 {
 	switch (numberOfHumanPlayers) {
 	case 0:
@@ -20,7 +21,6 @@ TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 		m_players.push_back(std::make_unique<PlayerHuman>("Player 1", 'X'));
 		m_players.push_back(std::make_unique<PlayerHuman>("Player 2", 'O'));
 	}
-	m_invertPlayers = invertPlayers();
 }
 void TicTacToe::step()
 {
@@ -64,7 +64,7 @@ void TicTacToe::terminate()
 	m_running = false;
 }
 // randomness in first move
-int TicTacToe::invertPlayers() const
+int TicTacToe::randomZeroOrOne() const
 {
 	static std::random_device rd;
 	static std::mt19937 gen(rd());

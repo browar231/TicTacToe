@@ -11,7 +11,6 @@ public:
 	void step();
 	bool isRunning() const;
 	void terminate();
-	int invertPlayers() const;
 	// for implementation
 	virtual void printBoard() const {};
 	virtual void onBeforeStep() const {};
@@ -22,8 +21,9 @@ public:
 
 protected:
 	bool m_running { true };
-	int m_invertPlayers; // should be const
+	const int m_invertPlayers;
 	std::vector<std::unique_ptr<Player>> m_players;
 	Board m_board;
+	int randomZeroOrOne() const;
 	int currentPlayerId() const;
 };
