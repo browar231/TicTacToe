@@ -7,7 +7,8 @@
 #include <vector>
 class TicTacToe {
 public:
-	TicTacToe(const int numberOfHumanPlayers);
+	TicTacToe()
+		: m_invertPlayers(randomZeroOrOne()) {};
 	void step();
 	bool isRunning() const;
 	void terminate();

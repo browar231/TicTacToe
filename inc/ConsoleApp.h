@@ -4,7 +4,7 @@
 class ConsoleApp : public TicTacToe {
 
 public:
-	using TicTacToe::TicTacToe;
+	ConsoleApp(const int numberOfHumanPlayers);
 	static void intro();
 	// overrides
 	void printBoard() const override;
