@@ -1,5 +1,7 @@
 #include "TicTacToe.h"
 #include "Console.h"
+#include "PlayerCPU.h"
+#include "PlayerConsole.h"
 #include <memory>
 #include <random>
 #include <string>
@@ -14,12 +16,12 @@ TicTacToe::TicTacToe(const int numberOfHumanPlayers)
 		break;
 	case 1:
 		m_players.push_back(std::make_unique<PlayerCPU>("CPU", 'O', PlayerCPU_strategy::BeastMode));
-		m_players.push_back(std::make_unique<PlayerHuman>("Player", 'X'));
+		m_players.push_back(std::make_unique<PlayerConsole>("Player", 'X'));
 		break;
 	case 2:
 	default:
-		m_players.push_back(std::make_unique<PlayerHuman>("Player 1", 'X'));
-		m_players.push_back(std::make_unique<PlayerHuman>("Player 2", 'O'));
+		m_players.push_back(std::make_unique<PlayerConsole>("Player 1", 'X'));
+		m_players.push_back(std::make_unique<PlayerConsole>("Player 2", 'O'));
 	}
 }
 void TicTacToe::step()

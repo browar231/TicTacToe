@@ -1,5 +1,4 @@
-#include "Players.h"
-#include "Console.h"
+#include "PlayerCPU.h"
 #include <algorithm>
 #include <array>
 #include <chrono>
@@ -7,34 +6,7 @@
 #include <random>
 #include <thread>
 #include <vector>
-// Player
-const std::string& Player::getName() const
-{
-	return m_name;
-}
-char Player::getSign() const
-{
-	return m_sign;
-}
-char Player::returnOpponentSign() const
-{
-	if (m_sign == 'O') {
-		return 'X';
-	}
-	return 'O';
-}
-// PlayerHuman
-int PlayerHuman::provideField(const Board& board) const
-{
-	return askForInput();
-}
-int PlayerHuman::askForInput() const
-{
-	int field;
-	Console::getInputUntilSuccess(field);
-	return field;
-}
-// PlayerCPU
+
 int PlayerCPU::provideField(const Board& board) const
 {
 	using namespace std::chrono_literals;

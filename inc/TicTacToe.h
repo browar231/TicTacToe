@@ -1,6 +1,6 @@
 #pragma once
 #include "Board.h"
-#include "Players.h"
+#include "Player.h"
 #include <array>
 #include <memory>
 #include <string>
