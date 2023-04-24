@@ -1,7 +1,7 @@
 #pragma once
 #include "TicTacToe.h"
 
-class TicTacToeConsoleApp : public TicTacToe {
+class ConsoleApp : public TicTacToe {
 
 public:
 	using TicTacToe::TicTacToe;

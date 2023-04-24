@@ -1,17 +1,17 @@
 #include "Console.h"
-#include "TicTacToeConsoleApp.h"
+#include "ConsoleApp.h"
 #include <iostream>
 int main()
 {
 	int playersAmount;
 	Console::clear();
-	TicTacToeConsoleApp::intro();
+	ConsoleApp::intro();
 	Console::getInputUntilSuccess(playersAmount);
 	if (playersAmount < 0 || playersAmount > 2) {
 		return EXIT_SUCCESS;
 	}
 	do {
-		TicTacToeConsoleApp game(playersAmount);
+		ConsoleApp game(playersAmount);
 		game.printBoard();
 		while (game.isRunning()) {
 			game.step();

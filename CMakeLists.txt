@@ -6,11 +6,11 @@ set (CXX_STANDARD_REQUIRED)
 set(SOURCE_FILES ${PROJECT_SOURCE_DIR}/src/Board.cpp ${PROJECT_SOURCE_DIR}/src/Console.cpp ${PROJECT_SOURCE_DIR}/src/Players.cpp ${PROJECT_SOURCE_DIR}/src/TicTacToe.cpp)
 
 if(WIN32)
-    add_executable(${PROJECT_NAME}_ConsoleApp WIN32 ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/TicTacToeConsoleApp.cpp ${SOURCE_FILES})
+    add_executable(${PROJECT_NAME}_ConsoleApp WIN32 ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/ConsoleApp.cpp ${SOURCE_FILES})
 endif()
 if(UNIX)
-    add_executable(${PROJECT_NAME}_ConsoleApp ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/TicTacToeConsoleApp.cpp ${SOURCE_FILES})
-    add_executable(${PROJECT_NAME}_App ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/TicTacToeConsoleApp.cpp ${SOURCE_FILES})
+    add_executable(${PROJECT_NAME}_ConsoleApp ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/ConsoleApp.cpp ${SOURCE_FILES})
+    # add_executable(${PROJECT_NAME}_App ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/TicTacToeConsoleApp.cpp ${SOURCE_FILES})
 endif()
 target_include_directories(${PROJECT_NAME}_ConsoleApp
     PUBLIC 
