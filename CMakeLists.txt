@@ -1,18 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(TicTacToe_ConsoleApp VERSION 0.1.0)
+project(TicTacToe VERSION 0.1.0)
 set (CMAKE_CXX_STANDARD 17)
 set (CXX_STANDARD_REQUIRED)
-
-set(SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/")
-file(GLOB SOURCE_FILES "${SOURCE_DIR}/*.cpp")
-set(TICTACTOE_CORE_EXTERNAL_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Core CACHE PATH "TICTACTOE_CORE")
-add_subdirectory(${TICTACTOE_CORE_EXTERNAL_SOURCE_DIR} TICTACTOE_CORE)
-
-add_executable(${PROJECT_NAME} ${SOURCE_FILES})
-
-target_link_libraries(${PROJECT_NAME} TicTacToe_Core)
-
-target_include_directories(${PROJECT_NAME}
-    PUBLIC 
-    ${CMAKE_CURRENT_SOURCE_DIR}/inc
-)
+add_subdirectory(Core)
+add_subdirectory(TicTacToe_ConsoleApp)
