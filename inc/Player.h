@@ -7,7 +7,7 @@ public:
 	Player(const std::string& name, char sign)
 		: m_name(name)
 		, m_sign(sign) {};
-	virtual ~Player() {};
+	virtual ~Player() = default;
 	virtual int provideField(const Board& board) const = 0;
 	const std::string& getName() const;
 	char getSign() const;

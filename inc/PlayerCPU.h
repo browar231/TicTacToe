@@ -13,6 +13,7 @@ public:
 	PlayerCPU(const std::string& name, char sign, PlayerCPU_strategy strategy)
 		: Player(name, sign)
 		, m_strategy(strategy) {};
+	virtual ~PlayerCPU() = default;
 	int provideField(const Board& board) const override;
 	int returnFirstAllowedField(const Board& board) const;
 	int returnRandomField(const Board& board) const;
