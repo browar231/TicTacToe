@@ -1,18 +1,18 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(TicTacToe VERSION 0.1.0)
+project(TicTacToe_ConsoleApp VERSION 0.1.0)
 set (CMAKE_CXX_STANDARD 17)
 set (CXX_STANDARD_REQUIRED)
 
-set(SOURCE_FILES ${PROJECT_SOURCE_DIR}/src/Board.cpp ${PROJECT_SOURCE_DIR}/src/Console.cpp ${PROJECT_SOURCE_DIR}/src/Player.cpp ${PROJECT_SOURCE_DIR}/src/PlayerCPU.cpp ${PROJECT_SOURCE_DIR}/src/TicTacToe.cpp)
+set(SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/")
+file(GLOB SOURCE_FILES "${SOURCE_DIR}/*.cpp")
+set(TICTACTOE_CORE_EXTERNAL_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Core CACHE PATH "TICTACTOE_CORE")
+add_subdirectory(${TICTACTOE_CORE_EXTERNAL_SOURCE_DIR} TICTACTOE_CORE)
 
-if(WIN32)
-    add_executable(${PROJECT_NAME}_ConsoleApp WIN32 ${SOURCE_FILES} ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/ConsoleApp.cpp ${PROJECT_SOURCE_DIR}/src/PlayerConsole.cpp)
-endif()
-if(UNIX)
-    add_executable(${PROJECT_NAME}_ConsoleApp ${SOURCE_FILES} ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/ConsoleApp.cpp ${PROJECT_SOURCE_DIR}/src/PlayerConsole.cpp)
-    # add_executable(${PROJECT_NAME}_App ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/TicTacToeConsoleApp.cpp ${SOURCE_FILES})
-endif()
-target_include_directories(${PROJECT_NAME}_ConsoleApp
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+
+target_link_libraries(${PROJECT_NAME} TicTacToe_Core)
+
+target_include_directories(${PROJECT_NAME}
     PUBLIC 
-    ${PROJECT_SOURCE_DIR}/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/inc
 )

@@ -1,5 +1,4 @@
 #include "TicTacToe.h"
-#include "Console.h"
 #include <memory>
 #include <random>
 #include <string>
@@ -19,7 +18,6 @@ void TicTacToe::step()
 		}
 	}
 	m_board.takeFieldOnBoard(selectedField, currentPlayer->getSign());
-	Console::clear();
 	printBoard();
 	if (m_board.isGameWon()) {
 		onWin(currentPlayer);

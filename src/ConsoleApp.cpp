@@ -1,4 +1,5 @@
 #include "ConsoleApp.h"
+#include "Console.h"
 #include "PlayerCPU.h"
 #include "PlayerConsole.h"
 #include <iostream>
@@ -43,6 +44,7 @@ void ConsoleApp::onInput() const
 }
 void ConsoleApp::printBoard() const
 {
+	Console::clear();
 	std::cout << '\n';
 	for (int i = 0; i < 9; i += 3) {
 		std::cout << m_board.getBoardArray()[i] << '|' << m_board.getBoardArray()[i + 1] << '|' << m_board.getBoardArray()[i + 2] << '\n';
