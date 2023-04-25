@@ -12,7 +12,8 @@ include(${wxWidgets_USE_FILE})
 add_executable(${PROJECT_NAME}
     ${SOURCE_DIR}/MainApp.cpp
     ${SOURCE_DIR}/MainFrame.cpp
-    ${SOURCE_DIR}/TicTacToe_GUI.cpp)
+    ${SOURCE_DIR}/TicTacToe_GUI.cpp
+    ${SOURCE_DIR}/PlayerGUI.cpp)
 
 target_link_libraries(${PROJECT_NAME} TicTacToe_Core)
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
