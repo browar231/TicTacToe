@@ -1,6 +1,9 @@
 #include "PlayerGUI.h"
+// rancommove
+#include "PlayerCPU.h"
+#include <memory>
 
 int PlayerGUI::provideField(const Board& board) const
 {
-	return 0;
+	return *p_lastField;
 }
