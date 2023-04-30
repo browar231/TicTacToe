@@ -7,15 +7,11 @@ void TicTacToe::step()
 {
 	const auto& currentPlayer = m_players[currentPlayerId()].get();
 	onBeforeStep();
-	int selectedField;
-	while (true) {
-		onInput();
-		selectedField = currentPlayer->provideField(m_board);
-		if (m_board.isMoveAllowed(selectedField)) {
-			break;
-		} else {
-			onInvalidMove();
-		}
+	onInput();
+	int selectedField = currentPlayer->provideField(m_board);
+	if (!m_board.isMoveAllowed(selectedField)) {
+		onInvalidMove();
+		return;
 	}
 	m_board.takeFieldOnBoard(selectedField, currentPlayer->getSign());
 	printBoard();
