@@ -9,8 +9,8 @@ set(SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 add_executable(${PROJECT_NAME}
     ${SOURCE_DIR}/Console.cpp
-    ${SOURCE_DIR}/ConsoleApp.cpp
-    ${SOURCE_DIR}/PlayerConsole.cpp
+    ${SOURCE_DIR}/TicTacToe_ConsoleApp.cpp
+    ${SOURCE_DIR}/Player_ConsoleApp.cpp
     ${SOURCE_DIR}/main.cpp)
 
 target_link_libraries(${PROJECT_NAME} TicTacToe_Core)

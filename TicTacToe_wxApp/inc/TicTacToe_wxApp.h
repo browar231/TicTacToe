@@ -1,9 +1,9 @@
 #pragma once
 #include "TicTacToe.h"
 #include <wx/wx.h>
-class TicTacToe_GUI : public TicTacToe {
+class TicTacToe_wxApp : public TicTacToe {
 public:
-	TicTacToe_GUI(std::array<wxButton*, 9> buttons, int& lastField, wxStaticText* outputBox);
+	TicTacToe_wxApp(std::array<wxButton*, 9> buttons, int& lastField, wxStaticText* outputBox);
 	void printBoard() const override;
 	void onWin(Player* winner) const override;
 	void onDraw() const override;

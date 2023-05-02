@@ -1,5 +1,5 @@
 #pragma once
-#include "TicTacToe_GUI.h"
+#include "TicTacToe_wxApp.h"
 #include <array>
 #include <wx/wx.h>
 enum {
@@ -7,10 +7,10 @@ enum {
 	ID_RESTART_BUTTON
 };
 class MainTimer : public wxTimer {
-	TicTacToe_GUI* m_game;
+	TicTacToe_wxApp* m_game;
 
 public:
-	MainTimer(TicTacToe_GUI* game);
+	MainTimer(TicTacToe_wxApp* game);
 	void Notify();
 	void start();
 };
@@ -24,5 +24,5 @@ public:
 	wxStaticText* m_outputField;
 	// TicTacToe
 	int m_lastField { -1 };
-	TicTacToe_GUI* m_game;
+	TicTacToe_wxApp* m_game;
 };

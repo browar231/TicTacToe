@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(TicTacToe_GUI VERSION 0.1.0)
+project(TicTacToe_wxApp VERSION 0.1.0)
 
 set(SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 find_package(wxWidgets REQUIRED)
@@ -12,8 +12,8 @@ include(${wxWidgets_USE_FILE})
 add_executable(${PROJECT_NAME}
     ${SOURCE_DIR}/MainApp.cpp
     ${SOURCE_DIR}/MainFrame.cpp
-    ${SOURCE_DIR}/TicTacToe_GUI.cpp
-    ${SOURCE_DIR}/PlayerGUI.cpp)
+    ${SOURCE_DIR}/TicTacToe_wxApp.cpp
+    ${SOURCE_DIR}/Player_wxApp.cpp)
 
 target_link_libraries(${PROJECT_NAME} TicTacToe_Core)
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})

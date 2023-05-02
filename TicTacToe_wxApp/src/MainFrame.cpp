@@ -1,6 +1,6 @@
 #include "MainFrame.h"
 #include "Board.h"
-#include "TicTacToe_GUI.h"
+#include "TicTacToe_wxApp.h"
 
 struct FieldId final : public wxClientData {
 	int field;
@@ -37,7 +37,7 @@ MainFrame::MainFrame(const wxString& title)
 		wxCommandEventHandler(MainFrame::OnRestart));
 	// init
 	Centre();
-	m_game = new TicTacToe_GUI(m_controls, m_lastField, m_outputField);
+	m_game = new TicTacToe_wxApp(m_controls, m_lastField, m_outputField);
 	m_game->printBoard();
 
 	auto* timer = new MainTimer(m_game);
@@ -62,11 +62,11 @@ void MainFrame::OnRestart(wxCommandEvent& event)
 	delete m_game;
 	m_lastField = -1;
 	m_outputField->SetLabel("");
-	m_game = new TicTacToe_GUI(m_controls, m_lastField, m_outputField);
+	m_game = new TicTacToe_wxApp(m_controls, m_lastField, m_outputField);
 	m_game->printBoard();
 }
 
-MainTimer::MainTimer(TicTacToe_GUI* game)
+MainTimer::MainTimer(TicTacToe_wxApp* game)
 	: wxTimer()
 	, m_game(game)
 {

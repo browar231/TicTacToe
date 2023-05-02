@@ -1,10 +1,10 @@
 #pragma once
 #include "TicTacToe.h"
 
-class ConsoleApp : public TicTacToe {
+class TicTacToe_ConsoleApp : public TicTacToe {
 
 public:
-	ConsoleApp(const int numberOfHumanPlayers);
+	TicTacToe_ConsoleApp(const int numberOfHumanPlayers);
 	static void intro();
 	// overrides
 	void printBoard() const override;

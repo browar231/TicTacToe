@@ -1,9 +1,9 @@
-#include "ConsoleApp.h"
+#include "TicTacToe_ConsoleApp.h"
 #include "Console.h"
 #include "PlayerCPU.h"
-#include "PlayerConsole.h"
+#include "Player_ConsoleApp.h"
 #include <iostream>
-ConsoleApp::ConsoleApp(const int numberOfHumanPlayers)
+TicTacToe_ConsoleApp::TicTacToe_ConsoleApp(const int numberOfHumanPlayers)
 {
 	switch (numberOfHumanPlayers) {
 	case 0:
@@ -12,36 +12,36 @@ ConsoleApp::ConsoleApp(const int numberOfHumanPlayers)
 		break;
 	case 1:
 		m_players.push_back(std::make_unique<PlayerCPU>("CPU", 'O', PlayerCPU_strategy::BeastMode));
-		m_players.push_back(std::make_unique<PlayerConsole>("Player", 'X'));
+		m_players.push_back(std::make_unique<Player_ConsoleApp>("Player", 'X'));
 		break;
 	case 2:
 	default:
-		m_players.push_back(std::make_unique<PlayerConsole>("Player 1", 'X'));
-		m_players.push_back(std::make_unique<PlayerConsole>("Player 2", 'O'));
+		m_players.push_back(std::make_unique<Player_ConsoleApp>("Player 1", 'X'));
+		m_players.push_back(std::make_unique<Player_ConsoleApp>("Player 2", 'O'));
 	}
 }
-void ConsoleApp::onBeforeStep(Player* currentPlayer) const
+void TicTacToe_ConsoleApp::onBeforeStep(Player* currentPlayer) const
 {
 	std::cout << "Player: " << currentPlayer->getName() << '\n';
 }
-void ConsoleApp::onInvalidMove() const
+void TicTacToe_ConsoleApp::onInvalidMove() const
 {
 	std::cout << "Invalid move\n";
 }
-void ConsoleApp::onWin(Player* currentPlayer) const
+void TicTacToe_ConsoleApp::onWin(Player* currentPlayer) const
 {
 	std::cout
 		<< currentPlayer->getName() << "(" << currentPlayer->getSign() << ") won!\n";
 }
-void ConsoleApp::onDraw() const
+void TicTacToe_ConsoleApp::onDraw() const
 {
 	std::cout << "Draw!\n";
 }
-void ConsoleApp::onInput() const
+void TicTacToe_ConsoleApp::onInput() const
 {
 	std::cout << "Field #";
 }
-void ConsoleApp::printBoard() const
+void TicTacToe_ConsoleApp::printBoard() const
 {
 	Console::clear();
 	std::cout << '\n';
@@ -53,7 +53,7 @@ void ConsoleApp::printBoard() const
 	}
 	std::cout << '\n';
 }
-void ConsoleApp::intro()
+void TicTacToe_ConsoleApp::intro()
 {
 	std::cout << "Tic Tac Toe game\n"
 			  << "To make a move, enter number field id when asked\n"
