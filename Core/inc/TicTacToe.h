@@ -14,7 +14,7 @@ public:
 	void terminate();
 	// for implementation
 	virtual void printBoard() const {};
-	virtual void onBeforeStep() const {};
+	virtual void onBeforeStep(Player* currentPlayer) const {};
 	virtual void onInvalidMove() const {};
 	virtual void onWin(Player* currentPlayer) const {};
 	virtual void onDraw() const {};

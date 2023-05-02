@@ -30,3 +30,8 @@ void TicTacToe_GUI::onDraw() const
 {
 	m_outputBox->SetLabel("Draw!");
 }
+
+void TicTacToe_GUI::onBeforeStep(Player* currentPlayer) const
+{
+	m_outputBox->SetLabel(currentPlayer->getName() + " " + currentPlayer->getSign());
+}

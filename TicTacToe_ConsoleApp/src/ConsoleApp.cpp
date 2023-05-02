@@ -20,9 +20,8 @@ ConsoleApp::ConsoleApp(const int numberOfHumanPlayers)
 		m_players.push_back(std::make_unique<PlayerConsole>("Player 2", 'O'));
 	}
 }
-void ConsoleApp::onBeforeStep() const
+void ConsoleApp::onBeforeStep(Player* currentPlayer) const
 {
-	const auto& currentPlayer = m_players[currentPlayerId()];
 	std::cout << "Player: " << currentPlayer->getName() << '\n';
 }
 void ConsoleApp::onInvalidMove() const

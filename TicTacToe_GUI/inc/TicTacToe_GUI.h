@@ -7,6 +7,7 @@ public:
 	void printBoard() const override;
 	void onWin(Player* winner) const override;
 	void onDraw() const override;
+	void onBeforeStep(Player* currentPlayer) const override;
 
 private:
 	std::array<wxButton*, 9> m_buttons;

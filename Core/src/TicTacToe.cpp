@@ -6,7 +6,7 @@
 void TicTacToe::step()
 {
 	const auto& currentPlayer = m_players[currentPlayerId()].get();
-	onBeforeStep();
+	onBeforeStep(currentPlayer);
 	onInput();
 	int selectedField = currentPlayer->provideField(m_board);
 	if (!m_board.isMoveAllowed(selectedField)) {

@@ -2,6 +2,10 @@
 #include "TicTacToe_GUI.h"
 #include <array>
 #include <wx/wx.h>
+enum {
+	ID_CONTROL = 999,
+	ID_RESTART_BUTTON
+};
 class MainTimer : public wxTimer {
 	TicTacToe_GUI* m_game;
 
@@ -15,6 +19,7 @@ public:
 	MainFrame(const wxString& title);
 	void OnQuit(wxCommandEvent& event);
 	void OnClick(wxCommandEvent& event);
+	void OnRestart(wxCommandEvent& event);
 	std::array<wxButton*, 9> m_controls;
 	wxStaticText* m_outputField;
 	// TicTacToe

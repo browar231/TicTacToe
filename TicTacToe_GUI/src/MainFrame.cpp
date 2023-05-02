@@ -10,24 +10,31 @@ MainFrame::MainFrame(const wxString& title)
 	: wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(400, 250))
 {
 	wxButton* quitButton = new wxButton(this, wxID_EXIT, wxT("Quit"));
+	wxButton* restartButton = new wxButton(this, ID_RESTART_BUTTON, wxT("Restart"));
+	m_outputField = new wxStaticText(this, 0, wxT(""));
 	auto sizer = new wxBoxSizer(wxVERTICAL);
+	auto sizerButtons = new wxBoxSizer(wxHORIZONTAL);
 	wxGridSizer* gs = new wxGridSizer(3, 3, 0, 0);
 	for (int i = 0; i < 9; i++) {
-		m_controls[i] = new wxButton(this, 0, wxString::Format(wxT("%i"), 0));
+		m_controls[i] = new wxButton(this, ID_CONTROL, wxString::Format(wxT("%i"), 0));
 		gs->Add(m_controls[i]);
 		FieldId* const data { new FieldId() };
 		data->field = i;
 		m_controls[i]->SetClientObject(data);
 	}
+	sizer->Add(m_outputField);
 	sizer->Add(gs, 1, wxEXPAND);
-	sizer->Add(quitButton, 0.5, wxEXPAND);
+	sizerButtons->Add(restartButton);
+	sizerButtons->Add(quitButton);
+	sizer->Add(sizerButtons);
 	SetSizer(sizer);
-	m_outputField = new wxStaticText(this, 0, wxT(""));
 	// events
 	Connect(wxID_EXIT, wxEVT_COMMAND_BUTTON_CLICKED,
 		wxCommandEventHandler(MainFrame::OnQuit));
-	Connect(0, wxEVT_COMMAND_BUTTON_CLICKED,
+	Connect(ID_CONTROL, wxEVT_COMMAND_BUTTON_CLICKED,
 		wxCommandEventHandler(MainFrame::OnClick));
+	Connect(ID_RESTART_BUTTON, wxEVT_COMMAND_BUTTON_CLICKED,
+		wxCommandEventHandler(MainFrame::OnRestart));
 	// init
 	Centre();
 	m_game = new TicTacToe_GUI(m_controls, m_lastField, m_outputField);
@@ -47,6 +54,16 @@ void MainFrame::OnClick(wxCommandEvent& event)
 
 	FieldId const* const myData { static_cast<FieldId const*>(lastButton->GetClientObject()) };
 	m_lastField = myData->field;
+}
+
+void MainFrame::OnRestart(wxCommandEvent& event)
+{
+	m_game->terminate();
+	delete m_game;
+	m_lastField = -1;
+	m_outputField->SetLabel("");
+	m_game = new TicTacToe_GUI(m_controls, m_lastField, m_outputField);
+	m_game->printBoard();
 }
 
 MainTimer::MainTimer(TicTacToe_GUI* game)
