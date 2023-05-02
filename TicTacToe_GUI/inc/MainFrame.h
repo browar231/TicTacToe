@@ -15,8 +15,8 @@ public:
 	MainFrame(const wxString& title);
 	void OnQuit(wxCommandEvent& event);
 	void OnClick(wxCommandEvent& event);
-	std::array<wxButton*, 9> m_buttons;
-	wxStaticText* output;
+	std::array<wxButton*, 9> m_controls;
+	wxStaticText* m_outputField;
 	// TicTacToe
 	int m_lastField { -1 };
 	TicTacToe_GUI* m_game;

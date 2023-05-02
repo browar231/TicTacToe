@@ -13,16 +13,16 @@ MainFrame::MainFrame(const wxString& title)
 	auto sizer = new wxBoxSizer(wxVERTICAL);
 	wxGridSizer* gs = new wxGridSizer(3, 3, 0, 0);
 	for (int i = 0; i < 9; i++) {
-		m_buttons[i] = new wxButton(this, 0, wxString::Format(wxT("%i"), 0));
-		gs->Add(m_buttons[i]);
+		m_controls[i] = new wxButton(this, 0, wxString::Format(wxT("%i"), 0));
+		gs->Add(m_controls[i]);
 		FieldId* const data { new FieldId() };
 		data->field = i;
-		m_buttons[i]->SetClientObject(data);
+		m_controls[i]->SetClientObject(data);
 	}
 	sizer->Add(gs, 1, wxEXPAND);
 	sizer->Add(quitButton, 0.5, wxEXPAND);
 	SetSizer(sizer);
-	output = new wxStaticText(this, 0, wxT(""));
+	m_outputField = new wxStaticText(this, 0, wxT(""));
 	// events
 	Connect(wxID_EXIT, wxEVT_COMMAND_BUTTON_CLICKED,
 		wxCommandEventHandler(MainFrame::OnQuit));
@@ -30,7 +30,7 @@ MainFrame::MainFrame(const wxString& title)
 		wxCommandEventHandler(MainFrame::OnClick));
 	// init
 	Centre();
-	m_game = new TicTacToe_GUI(m_buttons, m_lastField, output);
+	m_game = new TicTacToe_GUI(m_controls, m_lastField, m_outputField);
 	m_game->printBoard();
 
 	auto* timer = new MainTimer(m_game);
